@@ -36,44 +36,81 @@
                 <tr>
                     <th>氏 名</th>
                     <td class="form-input-name">
-                        <div><span>氏</span><input type="text" name="a1" value="" class="input-text-s"></div>
-                        <div><span>名</span><input type="text" name="a2" value="" class="input-text-s"></div>
+                        <div>
+                            <span>氏</span>
+                            <input type="text" name="profile[last_name]" value="" class="input-text-s">
+                        </div>
+                        <div>
+                            <span>名</span>
+                            <input type="text" name="profile[first_name]" value="" class="input-text-s">
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <th>フリガナ</th>
                     <td class="form-input-name">
-                        <div><span>シ</span><input type="text" name="a3" value="" class="input-text-s"></div>
-                        <div><span>メイ</span><input type="text" name="a4" value="" class="input-text-s"></div>
+                        <div>
+                            <span>シ</span>
+                            <input type="text" name="profile[last_name_kana]" value="" class="input-text-s">
+                        </div>
+                        <div>
+                            <span>メイ</span>
+                            <input type="text" name="profile[first_name_kana]" value="" class="input-text-s">
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <th>学校名</th>
                     <td class="form-input-wide">
-                        <div><input type="text" name="a5" value="" class="input-text-l"></div>
+                        <div>
+                            <input type="text" name="profile[school_name]" value="" class="input-text-l">
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <th>卒業年月日</th>
                     <td class="form-input-radio">
-                        <div><label><input type="radio" name="a6" value="1"><span>既卒</span></label></div>
-                        <div><label><input type="radio" name="a6" value="2025"><span>2025年3月卒業見込み</span></label>
+                        <div>
+                            <label>
+                                <input type="radio" name="profile[graduation_date]" value="1">
+                                <span>既卒</span></label>
                         </div>
-                        <div><label><input type="radio" name="a6" value="2026"><span>2026年3月卒業見込み</span></label>
+                        <div>
+                            <label>
+                                <input type="radio" name="profile[graduation_date]" value="2025">
+                                <span>2025年3月卒業見込み</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" name="profile[graduation_date]" value="2026">
+                                <span>2026年3月卒業見込み</span>
+                            </label>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <th>性 別</th>
                     <td class="form-input-radio">
-                        <div><label><input type="radio" value="1" name="a7"><span>男性</span></label></div>
-                        <div><label><input type="radio" value="2" name="a7"><span>女性</span></label></div>
+                        <div>
+                            <label>
+                                <input type="radio" value="1" name="profile[sex]">
+                                <span>男性</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" value="2" name="profile[sex]">
+                                <span>女性</span>
+                            </label>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <th>生年月日</th>
                     <td>
-                        <div><select name="a8">
+                        <div>
+                            <select name="profile[birthday_year]">
                                 <option>1964</option>
                                 <option>1965</option>
                                 <option>1966</option>
@@ -134,8 +171,11 @@
                                 <option>2021</option>
                                 <option>2022</option>
                                 <option>2023</option>
-                            </select><span>年</span></div>
-                        <div><select name="a9">
+                            </select>
+                            <span>年</span>
+                        </div>
+                        <div>
+                            <select name="profile[birthday_month]">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -148,8 +188,11 @@
                                 <option>10</option>
                                 <option>11</option>
                                 <option>12</option>
-                            </select><span>月</span></div>
-                        <div><select name="a10">
+                            </select>
+                            <span>月</span>
+                        </div>
+                        <div>
+                            <select name="profile[birthday_day]">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -181,13 +224,17 @@
                                 <option>29</option>
                                 <option>30</option>
                                 <option>31</option>
-                            </select><span>日</span></div>
+                            </select>
+                            <span>日</span>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <th>メールアドレス</th>
                     <td class="form-input-wide">
-                        <div><input type="text" name="a11" value="" class="input-text-l"></div>
+                        <div>
+                            <input type="text" name="profile[email]" value="" class="input-text-l">
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -202,17 +249,23 @@
                 <tr>
                     <th>郵便番号</th>
                     <td class="form-input-zip">
-                        <div><input type="text" name="b1" value=""
-                                class="input-text-zip1"><span>-</span><input type="text" name="b2" value=""
-                                class="input-text-zip2"></div>
-                        <div><button type="button" class="zip-search"
-                                onclick="AjaxZip3.zip2addr('b1','b2','b3','b4');">住所検索</button></div>
+                        <div>
+                            <input type="text" name="address[zip1]" value="" class="input-text-zip1">
+                            <span>-</span>
+                            <input type="text" name="address[zip2]" value="" class="input-text-zip2">
+                        </div>
+                        <div>
+                            <button type="button" class="zip-search" onclick="AjaxZip3.zip2addr('b1','b2','b3','b4');">
+                                住所検索
+                            </button>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <th>都道府県</th>
                     <td class="form-select-pref">
-                        <div><select name="b3">
+                        <div>
+                            <select name="address[pref]">
                                 <option value="">選択してください</option>
                                 <option>北海道</option>
                                 <option>青森県</option>
@@ -261,14 +314,15 @@
                                 <option>宮崎県</option>
                                 <option>鹿児島県</option>
                                 <option>沖縄県</option>
-                            </select></div>
+                            </select>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <th>住所１</th>
                     <td class="form-input-wide">
                         <div>
-                            <input type="text" name="b4" value="" class="input-text-l">
+                            <input type="text" name="address[addr1]" value="" class="input-text-l">
                             <span class="form-table-caption">郵便番号を入力して [住所検索] をクリックすると、住所が入力されます。</span>
                         </div>
                     </td>
@@ -277,7 +331,7 @@
                     <th>住所２</th>
                     <td class="form-input-wide">
                         <div>
-                            <input type="text" name="b5" value="" class="input-text-l">
+                            <input type="text" name="address[addr2]" value="" class="input-text-l">
                             <span class="form-table-caption">住所１以降をご入力ください。</span>
                         </div>
                     </td>
@@ -286,7 +340,7 @@
                     <th>電話番号</th>
                     <td class="form-input-wide">
                         <div>
-                            <input type="text" name="b6" value="" class="input-text-l">
+                            <input type="text" name="address[tel]" value="" class="input-text-l">
                             <span class="form-table-caption">※携帯番号可</span>
                         </div>
                     </td>
@@ -294,18 +348,32 @@
                 <tr>
                     <th>連絡方法</th>
                     <td class="form-input-radio">
-                        <div><label><input type="radio" value="2" name="b8"><span>電話</span></label></div>
-                        <div><label><input type="radio" value="3" name="b8"><span>休暇中連絡先への電話</span></label>
+                        <div>
+                            <label>
+                                <input type="radio" value="2" name="address[contact_method]">
+                                <span>電話</span>
+                            </label>
                         </div>
-                        <div><label><input type="radio" value="4" name="b8"><span>その他</span></label><input
-                                type="text" name="b9" value=""></div>
+                        <div>
+                            <label>
+                                <input type="radio" value="3" name="address[contact_method]">
+                                <span>休暇中連絡先への電話</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" value="4" name="address[contact_method]">
+                                <span>その他</span>
+                            </label>
+                            <input type="text" name="address[other_contact_method]" value="">
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <th>連絡可能時間帯</th>
                     <td class="form-input-wide">
                         <div>
-                            <input type="text" name="b10" class="input-text-l" value="">
+                            <input type="text" name="address[contact_time]" class="input-text-l" value="">
                             <span class="form-table-caption">例：9:00～17：00</span>
                         </div>
                     </td>
@@ -323,16 +391,16 @@
                 <tr>
                     <td colspan="2" class="form-input-check">
                         <div>現住所と異なる場合は入力して下さい。現住所と同様の場合はチェックして下さい。</div>
-                        <div><label><input class="ha" type="checkbox" name="ha"
+                        <div><label><input class="ha" type="checkbox" name="home[same_addr]"
                                     value="現住所と同じ"><span>現住所と同じ</span></label></div>
                     </td>
                 </tr>
                 <tr>
                     <th>郵便番号</th>
                     <td class="form-input-zip">
-                        <div><input type="text" name="c1" value="" class="input-text-zip1"></div>
+                        <div><input type="text" name="home[zip1]" value="" class="input-text-zip1"></div>
                         <div><span>-</span></div>
-                        <div><input type="text" name="c2" value="" class="input-text-zip2"></div>
+                        <div><input type="text" name="home[zip2]" value="" class="input-text-zip2"></div>
                         <div><button type="button" class="zip-search"
                                 onclick="AjaxZip3.zip2addr('c1','c2','c3','c4');">住所検索</button></div>
                     </td>
@@ -340,7 +408,7 @@
                 <tr>
                     <th>都道府県</th>
                     <td class="form-select-pref">
-                        <div><select name="c3">
+                        <div><select name="home[pref]">
                                 <option value="">選択してください</option>
                                 <option>北海道</option>
                                 <option>青森県</option>
@@ -396,7 +464,7 @@
                     <th>住所１</th>
                     <td>
                         <div>
-                            <input type="text" name="c4" value="" class="input-text-l">
+                            <input type="text" name="home[addr1]" value="" class="input-text-l">
                             <span class="form-table-caption">郵便番号を入力して [住所検索] をクリックすると、住所が入力されます。</span>
                         </div>
                     </td>
@@ -405,7 +473,7 @@
                     <th>住所２</th>
                     <td>
                         <div>
-                            <input type="text" name="c5" value="" class="input-text-l">
+                            <input type="text" name="home[addr2]" value="" class="input-text-l">
                             <span class="form-table-caption">住所１以降をご入力ください。</span>
                         </div>
                     </td>
@@ -414,7 +482,7 @@
                     <th>電話番号</th>
                     <td>
                         <div>
-                            <input type="text" name="c6" value="" class="input-text-l">
+                            <input type="text" name="home[tel]" value="" class="input-text-l">
                             <span class="form-table-caption">※携帯番号可</span>
                         </div>
                     </td>
@@ -425,10 +493,14 @@
         </div>
 
         <div class="form-footer">
-            <button type="reset" onClick="location.href='./'"><span>入力内容をクリア</span><i class="fa fa-angle-left"
-                    aria-hidden="true"></i></button>
-            <button type="submt" onClick="document.form.submit();"><span>入力内容を確認</span><i class="fa fa-angle-right"
-                    aria-hidden="true"></i></button>
+            <button type="reset" onClick="location.href='./'">
+                <span>入力内容をクリア</span>
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </button>
+            <button type="submt" onClick="document.form.submit();">
+                <span>入力内容を確認</span>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
         </div>
 
     </form>
