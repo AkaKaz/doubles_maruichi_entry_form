@@ -22,4 +22,10 @@ class EntryFormController extends Controller
 
         return view('entry/confirm', compact('data'));
     }
+
+    public function complete(EntryFormRequest $request)
+    {
+        // sending email
+        return view('entry/complete');
+    }
 }

@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [EntryFormController::class, 'index']);
 Route::post('/back', [EntryFormController::class, 'back']);
 Route::post('/confirm', [EntryFormController::class, 'confirm']);
+Route::post('/complete', [EntryFormController::class, 'complete']);
