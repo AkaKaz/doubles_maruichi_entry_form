@@ -4,9 +4,11 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Mccarlosen\LaravelMpdf\Facades\LaravelMpdf;
 
 class EntryReceived extends Mailable
 {
@@ -50,6 +52,13 @@ class EntryReceived extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromData(
+                fn () => LaravelMpdf::loadView('pdf/entry/personal-statement', [
+                    'data' => $this->data['personal_statement'],
+                ])->Output('', 'S'),
+                config('entry-form.personal_statement_pdf')
+            )->withMime('application/pdf'),
+        ];
     }
 }

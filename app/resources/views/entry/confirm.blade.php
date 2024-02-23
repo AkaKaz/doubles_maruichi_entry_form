@@ -53,6 +53,44 @@
         <input name="home[addr2]" type="hidden" value="{{ $data['home']['addr2'] }}" />
         <input name="home[tel]" type="hidden" value="{{ $data['home']['tel'] }}" />
 
+        {{-- 身上書 --}}
+        <input name="personal_statement[reason]" type="hidden" value="{{ $data['personal_statement']['reason'] }}" />
+        <input name="personal_statement[spirit]" type="hidden" value="{{ $data['personal_statement']['spirit'] }}" />
+        <input name="personal_statement[strength]" type="hidden"
+            value="{{ $data['personal_statement']['strength'] }}" />
+        <input name="personal_statement[weakness]" type="hidden"
+            value="{{ $data['personal_statement']['weakness'] }}" />
+        <input name="personal_statement[attitude]" type="hidden"
+            value="{{ $data['personal_statement']['attitude'] }}" />
+        @for ($i = 1; $i <= 6; $i++)
+            <input name="personal_statement[favorite_subject{{ $i }}]" type="hidden"
+                value="{{ $data['personal_statement']['favorite_subject' . $i] }}" />
+        @endfor
+        <input name="personal_statement[favorite_subject_level]" type="hidden"
+            value="{{ $data['personal_statement']['favorite_subject_level'] }}" />
+        <input name="personal_statement[sport]" type="hidden" value="{{ $data['personal_statement']['sport'] }}" />
+        <input name="personal_statement[hobby]" type="hidden" value="{{ $data['personal_statement']['hobby'] }}" />
+        <input name="personal_statement[desire]" type="hidden" value="{{ $data['personal_statement']['desire'] }}" />
+        @for ($i = 1; $i <= 6; $i++)
+            <input name="personal_statement[family][{{ $i }}][name]" type="hidden"
+                value="{{ $data['personal_statement']['family'][$i]['name'] }}" />
+            <input name="personal_statement[family][{{ $i }}][relationship]" type="hidden"
+                value="{{ $data['personal_statement']['family'][$i]['relationship'] }}" />
+            <input name="personal_statement[family][{{ $i }}][age]" type="hidden"
+                value="{{ $data['personal_statement']['family'][$i]['age'] }}" />
+            <input name="personal_statement[family][{{ $i }}][work]" type="hidden"
+                value="{{ $data['personal_statement']['family'][$i]['work'] }}" />
+            <input name="personal_statement[family][{{ $i }}][living]" type="hidden"
+                value="{{ $data['personal_statement']['family'][$i]['living'] }}" />
+        @endfor
+        <input name="personal_statement[commute_hour]" type="hidden"
+            value="{{ $data['personal_statement']['commute_hour'] }}" />
+        <input name="personal_statement[commute_minute]" type="hidden"
+            value="{{ $data['personal_statement']['commute_minute'] }}" />
+        <input name="personal_statement[dependents]" type="hidden"
+            value="{{ $data['personal_statement']['dependents'] }}" />
+        <input name="personal_statement[spouse]" type="hidden" value="{{ $data['personal_statement']['spouse'] }}" />
+
         <div class="form-box clearfix">
             <h3>プロフィール情報</h3>
             <x-entry.profile-confirm :data="$data['profile']" />
@@ -90,6 +128,11 @@
             @else
                 <x-entry.address-confirm name="home" :data="$data['home']" />
             @endif
+        </div>
+
+        <div class="form-box clearfix">
+            <h3>身上書</h3>
+            <x-entry.personal-statement-confirm :data="$data['personal_statement']" />
         </div>
 
         <div class="form-footer">

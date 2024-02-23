@@ -137,6 +137,12 @@
             </x-entry.address-form>
         </div>
 
+        <div class="form-box clearfix">
+            <h3>身上書</h3>
+
+            <x-entry.personal-statement-form />
+        </div>
+
         <div class="form-footer">
             <button type="reset" onClick="location.href='./'">
                 <span>入力内容をクリア</span>

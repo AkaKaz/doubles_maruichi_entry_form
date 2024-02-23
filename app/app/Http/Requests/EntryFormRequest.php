@@ -54,6 +54,32 @@ class EntryFormRequest extends FormRequest
             'home.addr1'     => 'required_without:home.same_addr|nullable|string',
             'home.addr2'     => 'required_without:home.same_addr|nullable|string',
             'home.tel'       => 'required_without:home.same_addr|nullable|string',
+
+            // 身上書
+            'personal_statement.reason'                 => 'required|string|max:111',
+            'personal_statement.spirit'                 => 'required|string|max:111',
+            'personal_statement.strength'               => 'required|string|max:111',
+            'personal_statement.weakness'               => 'required|string|max:111',
+            'personal_statement.attitude'               => 'required|string|max:111',
+            'personal_statement.favorite_subject1'      => 'required|string',
+            'personal_statement.favorite_subject2'      => 'required|string',
+            'personal_statement.favorite_subject3'      => 'required|string',
+            'personal_statement.favorite_subject4'      => 'required|string',
+            'personal_statement.favorite_subject5'      => 'required|string',
+            'personal_statement.favorite_subject6'      => 'required|string',
+            'personal_statement.favorite_subject_level' => 'required|string|max:74',
+            'personal_statement.sport'                  => 'required|string|max:74',
+            'personal_statement.hobby'                  => 'required|string|max:74',
+            'personal_statement.desire'                 => 'required|string|max:111',
+            'personal_statement.family.*.name'          => 'nullable|string|max:12',
+            'personal_statement.family.*.relationship'  => 'required_with:personal_statement.family.*.name|nullable|string|max:3',
+            'personal_statement.family.*.age'           => 'required_with:personal_statement.family.*.name|nullable|string',
+            'personal_statement.family.*.work'          => 'required_with:personal_statement.family.*.name|nullable|string|max:15',
+            'personal_statement.family.*.living'        => 'required_with:personal_statement.family.*.name|nullable|string',
+            'personal_statement.commute_hour'           => 'required|string',
+            'personal_statement.commute_minute'         => 'required|string',
+            'personal_statement.dependents'             => 'required|string',
+            'personal_statement.spouse'                 => 'required|string',
         ];
     }
 
@@ -92,6 +118,32 @@ class EntryFormRequest extends FormRequest
             'home.addr1'     => '『帰省先住所：住所１』',
             'home.addr2'     => '『帰省先住所：住所２』',
             'home.tel'       => '『帰省先住所：電話番号』',
+
+            // 身上書
+            'personal_statement.reason'                 => '『身上書：志望の動機』',
+            'personal_statement.spirit'                 => '『身上書：入社への意欲・心意気』',
+            'personal_statement.strength'               => '『身上書：セールスポイント』',
+            'personal_statement.weakness'               => '『身上書：ウイークポイント』',
+            'personal_statement.attitude'               => '『身上書：仕事への取組姿勢・正確度・処理スピードに関して』',
+            'personal_statement.favorite_subject1'      => '『身上書：得意な学科1』',
+            'personal_statement.favorite_subject2'      => '『身上書：得意な学科2』',
+            'personal_statement.favorite_subject3'      => '『身上書：得意な学科3』',
+            'personal_statement.favorite_subject4'      => '『身上書：得意な学科4』',
+            'personal_statement.favorite_subject5'      => '『身上書：得意な学科5』',
+            'personal_statement.favorite_subject6'      => '『身上書：得意な学科6』',
+            'personal_statement.favorite_subject_level' => '『身上書：1番の学科はどの程度得意ですか？』',
+            'personal_statement.sport'                  => '『身上書：スポーツ』',
+            'personal_statement.hobby'                  => '『身上書：趣味』',
+            'personal_statement.desire'                 => '『身上書：当社への希望記入欄』',
+            'personal_statement.family.*.name'          => '『身上書：家族構成:index：氏名』',
+            'personal_statement.family.*.relationship'  => '『身上書：家族構成:index：続柄』',
+            'personal_statement.family.*.age'           => '『身上書：家族構成:index：年齢』',
+            'personal_statement.family.*.work'          => '『身上書：家族構成:index：職業・勤務先』',
+            'personal_statement.family.*.living'        => '『身上書：家族構成:index：同居の有無』',
+            'personal_statement.commute_hour'           => '『身上書：通勤時間(時)』',
+            'personal_statement.commute_minute'         => '『身上書：通勤時間(分)』',
+            'personal_statement.dependents'             => '『身上書：扶養家族数』',
+            'personal_statement.spouse'                 => '『身上書：配偶者』',
         ];
     }
 
@@ -100,6 +152,7 @@ class EntryFormRequest extends FormRequest
         return [
             'required'         => ':attributeを入力してください',
             'required_if'      => ':attributeを入力してください',
+            'required_with'    => ':attributeを入力してください',
             'required_without' => ':attributeを入力してください',
         ];
     }
