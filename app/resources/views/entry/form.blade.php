@@ -34,7 +34,8 @@
     <h2 class="entry-form-title">プロフィール情報の入力</h2>
     <p class="entry-form-attention">※全ての項目が入力必須項目となります。</p>
 
-    <form name="form" method="post" id="form" action="index.php?act=confirm">
+    <form name="form" method="post" id="form" action="confirm">
+        @csrf
 
         <style>
             .err {
