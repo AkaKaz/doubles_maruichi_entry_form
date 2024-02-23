@@ -46,6 +46,14 @@
             }
         </style>
 
+        @if ($errors->any())
+            <ul class="err">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+
         <div class="form-box clearfix">
 
             <h3>プロフィール情報</h3>
@@ -64,22 +72,26 @@
                         <td class="form-input-radio">
                             <div>
                                 <label>
-                                    <input type="radio" value="2" name="address[contact_method]">
+                                    <input type="radio" value="電話" name="address[contact_method]"
+                                        {{ old('address.contact_method') == '電話' ? 'checked' : '' }}>
                                     <span>電話</span>
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <input type="radio" value="3" name="address[contact_method]">
+                                    <input type="radio" value="休暇中連絡先への電話" name="address[contact_method]"
+                                        {{ old('address.contact_method') == '休暇中連絡先への電話' ? 'checked' : '' }}>
                                     <span>休暇中連絡先への電話</span>
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <input type="radio" value="4" name="address[contact_method]">
+                                    <input type="radio" value="その他" name="address[contact_method]"
+                                        {{ old('address.contact_method') == 'その他' ? 'checked' : '' }}>
                                     <span>その他</span>
                                 </label>
-                                <input type="text" name="address[other_contact_method]" value="">
+                                <input type="text" name="address[other_contact_method]"
+                                    value="{{ old('address.other_contact_method') }}">
                             </div>
                         </td>
                     </tr>
@@ -87,7 +99,8 @@
                         <th>連絡可能時間帯</th>
                         <td class="form-input-wide">
                             <div>
-                                <input type="text" name="address[contact_time]" class="input-text-l" value="">
+                                <input type="text" name="address[contact_time]" class="input-text-l"
+                                    value="{{ old('address.contact_time') }}">
                                 <span class="form-table-caption">例：9:00～17：00</span>
                             </div>
                         </td>
@@ -109,7 +122,7 @@
                             <div>
                                 <label>
                                     <input class="ha" type="checkbox" name="home[same_addr]" value="現住所と同じ"
-                                        onchange="changeHomeAddress(this)">
+                                        onchange="changeHomeAddress(this)" {{ old('home.same_addr') ? 'checked' : '' }}>
                                     <span>現住所と同じ</span>
                                 </label>
                             </div>
