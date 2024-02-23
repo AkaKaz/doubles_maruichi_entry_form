@@ -48,6 +48,11 @@
 
         @if ($errors->any())
             <ul class="err">
+                @if ($errors->has('error_message'))
+                    <li>{{ $errors->first('error_message') }}</li>
+                    <li></li>
+                @endif
+
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach

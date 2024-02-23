@@ -27,4 +27,13 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, $exception)
+    {
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+            return redirect('/')->withInput()->withErrors('error_message', 'セッションが切れました。もう一度お試しください。');
+        }
+
+        return parent::render($request, $exception);
+    }
 }
