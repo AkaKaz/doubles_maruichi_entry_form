@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EntryFormRequest;
+use App\Mail\EntryReceived;
+use Illuminate\Support\Facades\Mail;
 
 class EntryFormController extends Controller
 {
@@ -25,7 +27,15 @@ class EntryFormController extends Controller
 
     public function complete(EntryFormRequest $request)
     {
-        // sending email
+        $data = $request->validated();
+
+        foreach (config('entry-form.to') as $to) {
+            $mail = Mail::to($to)
+                ->cc(config('entry-form.cc'))
+                ->bcc(config('entry-form.bcc'))
+                ->send(new EntryReceived($data));
+        }
+
         return view('entry/complete');
     }
 }
