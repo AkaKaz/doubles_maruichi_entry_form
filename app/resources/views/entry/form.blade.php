@@ -1,5 +1,22 @@
 @extends('template')
 
+@section('head')
+    <style>
+        .hide-address-form tr:not(:first-child) {
+            display: none;
+        }
+    </style>
+    <script>
+        function changeHomeAddress(value) {
+            const homeForm = document.getElementById('home-form');
+            if (value.checked)
+                homeForm.classList.add('hide-address-form');
+            else
+                homeForm.classList.remove('hide-address-form');
+        }
+    </script>
+@endsection
+
 @section('title-area')
     <h1 class="contents-main-title">新卒採用エントリーフォーム</h1>
     <span class="contents-sub-title">ENTRY FORM</span>
@@ -79,7 +96,7 @@
         </div>
 
 
-        <div class="form-box clearfix">
+        <div id="home-form" class="form-box clearfix {{ old('home.same_addr') ? 'hide-address-form' : '' }}">
 
             <h3>帰省先住所</h3>
 
@@ -90,7 +107,8 @@
                             <div>現住所と異なる場合は入力して下さい。現住所と同様の場合はチェックして下さい。</div>
                             <div>
                                 <label>
-                                    <input class="ha" type="checkbox" name="home[same_addr]" value="現住所と同じ">
+                                    <input class="ha" type="checkbox" name="home[same_addr]" value="現住所と同じ"
+                                        onchange="changeHomeAddress(this)">
                                     <span>現住所と同じ</span>
                                 </label>
                             </div>
