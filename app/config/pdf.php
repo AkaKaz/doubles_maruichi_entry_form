@@ -25,8 +25,15 @@ return [
     'watermark_image_alpha'    => 0.2,
     'watermark_image_size'     => 'D',
     'watermark_image_position' => 'P',
-    'custom_font_dir'          => '',
-    'custom_font_data'         => [],
+    'custom_font_dir'          => public_path('font/'),
+    'custom_font_data'         => [
+        'source-han-sans' => [
+            'R' => 'SourceHanSansHW-VF.ttf',
+        ],
+        'source-han-serif' => [
+            'R' => 'SourceHanSerif-VF.ttf',
+        ],
+    ],
     'auto_language_detection'  => false,
     'temp_dir'                 => storage_path('app'),
     'pdfa'                     => false,
