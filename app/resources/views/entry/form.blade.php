@@ -138,8 +138,32 @@
         </div>
 
         <div class="form-box clearfix">
-            <h3>身上書</h3>
+            <h3>学歴・職歴</h3>
+            <x-entry.resume-form count="14" name="careers">
+                <x-slot:head>
+                    <tr>
+                        <td colspan="2" class="form-input-check">
+                            <div>
+                                各別にまとめて記入する
+                            </div>
+                        </td>
+                    </tr>
+                </x-slot>
+            </x-entry.resume-form>
+        </div>
 
+        <div class="form-box clearfix">
+            <h3>免許・資格</h3>
+            <x-entry.resume-form count="5" name="licenses" />
+        </div>
+
+        <div class="form-box clearfix">
+            <h3>賞罰</h3>
+            <x-entry.resume-form count="4" name="rewards" />
+        </div>
+
+        <div class="form-box clearfix">
+            <h3>身上書</h3>
             <x-entry.personal-statement-form />
         </div>
 

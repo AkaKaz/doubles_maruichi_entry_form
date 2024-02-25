@@ -55,6 +55,21 @@ class EntryFormRequest extends FormRequest
             'home.addr2'     => 'required_without:home.same_addr|nullable|string',
             'home.tel'       => 'required_without:home.same_addr|nullable|string',
 
+            // 学歴・職歴
+            'careers.*.content' => 'nullable|string|max:34',
+            'careers.*.year'    => 'required_with:careers.*.content|nullable|string',
+            'careers.*.month'   => 'required_with:careers.*.content|nullable|string',
+
+            // 免許・資格
+            'licenses.*.content' => 'nullable|string|max:34',
+            'licenses.*.year'    => 'required_with:licenses.*.content|nullable|string',
+            'licenses.*.month'   => 'required_with:licenses.*.content|nullable|string',
+
+            // 賞罰
+            'rewards.*.content' => 'nullable|string|max:34',
+            'rewards.*.year'    => 'required_with:rewards.*.content|nullable|string',
+            'rewards.*.month'   => 'required_with:rewards.*.content|nullable|string',
+
             // 身上書
             'personal_statement.reason'                 => 'required|string|max:111',
             'personal_statement.spirit'                 => 'required|string|max:111',
@@ -118,6 +133,21 @@ class EntryFormRequest extends FormRequest
             'home.addr1'     => '『帰省先住所：住所１』',
             'home.addr2'     => '『帰省先住所：住所２』',
             'home.tel'       => '『帰省先住所：電話番号』',
+
+            // 学歴・職歴
+            'careers.*.content' => '『学歴・職歴:index：内容』',
+            'careers.*.year'    => '『学歴・職歴:index：年』',
+            'careers.*.month'   => '『学歴・職歴:index：月』',
+
+            // 免許・資格
+            'licenses.*.content' => '『免許・資格:index：内容』',
+            'licenses.*.year'    => '『免許・資格:index：年』',
+            'licenses.*.month'   => '『免許・資格:index：月』',
+
+            // 賞罰
+            'rewards.*.content' => '『賞罰:index：内容』',
+            'rewards.*.year'    => '『賞罰:index：年』',
+            'rewards.*.month'   => '『賞罰:index：月』',
 
             // 身上書
             'personal_statement.reason'                 => '『身上書：志望の動機』',

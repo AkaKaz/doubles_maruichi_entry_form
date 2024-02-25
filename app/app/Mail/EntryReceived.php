@@ -54,6 +54,13 @@ class EntryReceived extends Mailable
     {
         return [
             Attachment::fromData(
+                fn () => LaravelMpdf::loadView('pdf/entry/resume', [
+                    'data' => $this->data,
+                ])->Output('', 'S'),
+                config('entry-form.resume_pdf')
+            )->withMime('application/pdf'),
+
+            Attachment::fromData(
                 fn () => LaravelMpdf::loadView('pdf/entry/personal-statement', [
                     'data' => $this->data['personal_statement'],
                 ])->Output('', 'S'),

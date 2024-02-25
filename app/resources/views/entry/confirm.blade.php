@@ -53,6 +53,36 @@
         <input name="home[addr2]" type="hidden" value="{{ $data['home']['addr2'] }}" />
         <input name="home[tel]" type="hidden" value="{{ $data['home']['tel'] }}" />
 
+        {{-- 学歴・職歴 --}}
+        @for ($i = 1; $i <= 14; $i++)
+            <input name="careers[{{ $i }}][year]" type="hidden"
+                value="{{ $data['careers'][$i]['year'] }}" />
+            <input name="careers[{{ $i }}][month]" type="hidden"
+                value="{{ $data['careers'][$i]['month'] }}" />
+            <input name="careers[{{ $i }}][content]" type="hidden"
+                value="{{ $data['careers'][$i]['content'] }}" />
+        @endfor
+
+        {{-- 免許・資格 --}}
+        @for ($i = 1; $i <= 5; $i++)
+            <input name="licenses[{{ $i }}][year]" type="hidden"
+                value="{{ $data['licenses'][$i]['year'] }}" />
+            <input name="licenses[{{ $i }}][month]" type="hidden"
+                value="{{ $data['licenses'][$i]['month'] }}" />
+            <input name="licenses[{{ $i }}][content]" type="hidden"
+                value="{{ $data['licenses'][$i]['content'] }}" />
+        @endfor
+
+        {{-- 賞罰 --}}
+        @for ($i = 1; $i <= 4; $i++)
+            <input name="rewards[{{ $i }}][year]" type="hidden"
+                value="{{ $data['rewards'][$i]['year'] }}" />
+            <input name="rewards[{{ $i }}][month]" type="hidden"
+                value="{{ $data['rewards'][$i]['month'] }}" />
+            <input name="rewards[{{ $i }}][content]" type="hidden"
+                value="{{ $data['rewards'][$i]['content'] }}" />
+        @endfor
+
         {{-- 身上書 --}}
         <input name="personal_statement[reason]" type="hidden" value="{{ $data['personal_statement']['reason'] }}" />
         <input name="personal_statement[spirit]" type="hidden" value="{{ $data['personal_statement']['spirit'] }}" />
@@ -128,6 +158,21 @@
             @else
                 <x-entry.address-confirm name="home" :data="$data['home']" />
             @endif
+        </div>
+
+        <div class="form-box clearfix">
+            <h3>学歴・職歴</h3>
+            <x-entry.resume-confirm count="14" name="careers" :data="$data['careers']" />
+        </div>
+
+        <div class="form-box clearfix">
+            <h3>免許・資格</h3>
+            <x-entry.resume-confirm count="5" name="licenses" :data="$data['licenses']" />
+        </div>
+
+        <div class="form-box clearfix">
+            <h3>賞罰</h3>
+            <x-entry.resume-confirm count="4" name="rewards" :data="$data['rewards']" />
         </div>
 
         <div class="form-box clearfix">
