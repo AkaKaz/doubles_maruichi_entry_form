@@ -124,4 +124,17 @@
             </div>
         </td>
     </tr>
+    <tr>
+        <th>顔写真</th>
+        <td class="form-input-wide">
+            <div>
+                <input type="file" accept="image/png,imgage/jpeg,image/bmp" name="profile[face]"
+                    class="input-text-l">
+                @if (old('profile._face.base64'))
+                    <input type="hidden" name="profile[_face][mime]" value="{{ old('profile._face.mime') }}">
+                    <input type="hidden" name="profile[_face][base64]" value="{{ old('profile._face.base64') }}">
+                @endif
+            </div>
+        </td>
+    </tr>
 </table>

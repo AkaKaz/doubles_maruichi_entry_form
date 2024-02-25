@@ -44,4 +44,10 @@
             {{ $data['email'] }}
         </td>
     </tr>
+    <tr>
+        <th>顔写真</th>
+        <td class="form-input-wide">
+            <img src="data:{{ $data['_face']['mime'] }};base64,{{ $data['_face']['base64'] }}" alt="顔写真">
+        </td>
+    </tr>
 </table>

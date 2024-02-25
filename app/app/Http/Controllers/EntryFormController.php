@@ -22,6 +22,15 @@ class EntryFormController extends Controller
     {
         $data = $request->validated();
 
+        if ($request->has('profile.face')) {
+            $_face = file_get_contents($data['profile']['face']);
+            $_face_b64 = base64_encode($_face);
+            $data['profile']['_face'] = [
+                'base64' => $_face_b64,
+                'mime' => $data['profile']['face']->getMimeType(),
+            ];
+        }
+
         return view('entry/confirm', compact('data'));
     }
 

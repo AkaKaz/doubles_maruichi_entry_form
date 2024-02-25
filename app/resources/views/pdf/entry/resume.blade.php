@@ -40,8 +40,8 @@
 
         .picture-box img {
             margin: auto;
-            width: 30mm;
-            height: 40mm;
+            overflow: hidden;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -58,9 +58,9 @@
             <td colspan="5" class="bb">
                 ふりがな　{{ $data['profile']['last_name_kana'] }} {{ $data['profile']['first_name_kana'] }}
             </td>
-            <td rowspan="9" class="w-48 picture-box">
-                {{-- <img src="" alt="写真" style="border: 1px solid red;" /> --}}
-                <div style="width: 30mm; height: 40mm;" />
+            <td rowspan="9" class="w-48 picture-box p-0">
+                <img src="data:{{ $data['profile']['_face']['mime'] }};base64,{{ $data['profile']['_face']['base64'] }}"
+                    class="w-48" alt="写真" />
             </td>
         </tr>
         <tr>

@@ -34,6 +34,9 @@ class EntryFormRequest extends FormRequest
             'profile.birthday_month'  => 'required|string',
             'profile.birthday_day'    => 'required|string',
             'profile.email'           => 'required|string',
+            'profile._face.base64'    => 'string',
+            'profile._face.mime'      => 'string',
+            'profile.face'            => 'required_without:profile._face.base64|image|mimes:jpeg,png,jpg,gif|max:2048',
 
             // 住所
             'address.zip1'                 => 'required|string',
@@ -113,6 +116,7 @@ class EntryFormRequest extends FormRequest
             'profile.birthday_month'  => '『プロフィール情報：生年月日（月）』',
             'profile.birthday_day'    => '『プロフィール情報：生年月日（日）』',
             'profile.email'           => '『プロフィール情報：メールアドレス』',
+            'profile.face'            => '『プロフィール情報：顔写真』',
 
             // 住所
             'address.zip1'                 => '『住所情報：郵便番号(上3桁)』',
@@ -184,6 +188,8 @@ class EntryFormRequest extends FormRequest
             'required_if'      => ':attributeを入力してください',
             'required_with'    => ':attributeを入力してください',
             'required_without' => ':attributeを入力してください',
+            'image'            => ':attributeは画像ファイルを選択してください',
+            'mimes'            => ':attributeは:values形式の画像ファイルを選択してください',
         ];
     }
 }

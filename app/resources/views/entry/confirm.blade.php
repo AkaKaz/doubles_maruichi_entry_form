@@ -29,6 +29,8 @@
         <input name="profile[birthday_month]" type="hidden" value="{{ $data['profile']['birthday_month'] }}" />
         <input name="profile[birthday_day]" type="hidden" value="{{ $data['profile']['birthday_day'] }}" />
         <input name="profile[email]" type="hidden" value="{{ $data['profile']['email'] }}" />
+        <input name="profile[_face][base64]" type="hidden" value="{{ $data['profile']['_face']['base64'] }}" />
+        <input name="profile[_face][mime]" type="hidden" value="{{ $data['profile']['_face']['mime'] }}" />
 
         {{-- 住所 --}}
         <input name="address[zip1]" type="hidden" value="{{ $data['address']['zip1'] }}" />
