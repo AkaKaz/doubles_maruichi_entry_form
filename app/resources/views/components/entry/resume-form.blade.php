@@ -47,7 +47,7 @@
                 </div>
                 <div>
                     <input type="text" name="{{ $name }}[{{ $i }}][content]"
-                        value="{{ old("{$name}.{$i}.content") }}" class="input-text-l" maxlength="34">
+                        value="{{ old("{$name}.{$i}.content") }}" class="input-text-l" maxlength="35">
                 </div>
             </td>
         </tr>

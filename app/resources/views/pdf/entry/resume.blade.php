@@ -107,7 +107,7 @@
         <tr>
             <td class=""></td>
             <td colspan="4" class="bb">
-                携帯電話　{{ $data['address']['tel'] }}
+                携帯電話　{{ $data['address']['mobile'] }}
             </td>
         </tr>
         <tr>
@@ -118,10 +118,10 @@
         <tr>
             <td class="ub"></td>
             <td colspan="5" class="bb ub">
-                @if (!$data['home']['same_addr'])
+                @if (array_key_exists('same_addr', $data['emergency']) && !$data['emergency']['same_addr'])
                     住　　所　<span class="text-xs">
-                        〒{{ $data['home']['zip1'] }}-{{ $data['home']['zip2'] }}
-                        {{ '　　　　　' }}{{ $data['home']['pref'] }}{{ $data['home']['addr1'] }}<br>{{ $data['home']['addr2'] }}
+                        〒{{ $data['emergency']['zip1'] }}-{{ $data['emergency']['zip2'] }}
+                        {{ '　　　　　' }}{{ $data['emergency']['pref'] }}{{ $data['emergency']['addr1'] }}<br>{{ $data['emergency']['addr2'] }}
                     </span>
                 @else
                     住　　所
@@ -131,12 +131,16 @@
         <tr>
             <td class=""></td>
             <td colspan="2" class="bb">
-                氏　　名
+                @if (array_key_exists('same_addr', $data['emergency']) && !$data['emergency']['same_addr'])
+                    氏　　名　{{ $data['emergency']['name'] }}
+                @else
+                    氏　　名
+                @endif
             </td>
             <td class=""></td>
             <td colspan="2" class="bb">
-                @if (!$data['home']['same_addr'])
-                    連絡先電話番号　{{ $data['home']['tel'] }}
+                @if (array_key_exists('same_addr', $data['emergency']) && !$data['emergency']['same_addr'])
+                    連絡先電話番号　{{ $data['emergency']['tel'] }}
                 @else
                     連絡先電話番号
                 @endif

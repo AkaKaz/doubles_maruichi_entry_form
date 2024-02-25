@@ -6,10 +6,10 @@
         <th>郵便番号</th>
         <td class="form-input-zip">
             <div>
-                <input type="text" name="{{ $name }}[zip1]" value="{{ old("{$name}.zip1") }}"
+                <input type="text" name="{{ $name }}[zip1]" value="{{ old("{$name}.zip1") }}" maxlength="3"
                     class="input-text-zip1">
                 <span>-</span>
-                <input type="text" name="{{ $name }}[zip2]" value="{{ old("{$name}.zip2") }}"
+                <input type="text" name="{{ $name }}[zip2]" value="{{ old("{$name}.zip2") }}" maxlength="4"
                     class="input-text-zip2">
             </div>
             <div>
@@ -40,7 +40,7 @@
         <td class="form-input-wide">
             <div>
                 <input type="text" name="{{ $name }}[addr1]" value="{{ old("{$name}.addr1") }}"
-                    class="input-text-l">
+                    maxlength="29" class="input-text-l">
                 <span class="form-table-caption">郵便番号を入力して [住所検索] をクリックすると、住所が入力されます。</span>
             </div>
         </td>
@@ -50,7 +50,7 @@
         <td class="form-input-wide">
             <div>
                 <input type="text" name="{{ $name }}[addr2]" value="{{ old("{$name}.addr2") }}"
-                    class="input-text-l">
+                    maxlength="33" class="input-text-l">
                 <span class="form-table-caption">住所１以降をご入力ください。</span>
             </div>
         </td>
@@ -59,7 +59,7 @@
         <th>電話番号</th>
         <td class="form-input-wide">
             <div>
-                <input type="text" name="{{ $name }}[tel]" value="{{ old("{$name}.tel") }}"
+                <input type="text" name="{{ $name }}[tel]" value="{{ old("{$name}.tel") }}" maxlength="20"
                     class="input-text-l">
                 <span class="form-table-caption">※携帯番号可</span>
             </div>

@@ -4,11 +4,12 @@
         <td class="form-input-name">
             <div>
                 <span>氏</span>
-                <input type="text" name="profile[last_name]" value="{{ old('profile.last_name') }}" class="input-text-s">
+                <input type="text" name="profile[last_name]" value="{{ old('profile.last_name') }}" maxlength="10"
+                    class="input-text-s">
             </div>
             <div>
                 <span>名</span>
-                <input type="text" name="profile[first_name]" value="{{ old('profile.first_name') }}"
+                <input type="text" name="profile[first_name]" value="{{ old('profile.first_name') }}" maxlength="10"
                     class="input-text-s">
             </div>
         </td>
@@ -19,12 +20,12 @@
             <div>
                 <span>シ</span>
                 <input type="text" name="profile[last_name_kana]" value="{{ old('profile.last_name_kana') }}"
-                    class="input-text-s">
+                    maxlength="14" class="input-text-s">
             </div>
             <div>
                 <span>メイ</span>
                 <input type="text" name="profile[first_name_kana]" value="{{ old('profile.first_name_kana') }}"
-                    class="input-text-s">
+                    maxlength="14" class="input-text-s">
             </div>
         </td>
     </tr>

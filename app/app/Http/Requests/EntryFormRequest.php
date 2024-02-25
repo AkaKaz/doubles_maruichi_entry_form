@@ -23,10 +23,10 @@ class EntryFormRequest extends FormRequest
     {
         return [
             // プロフィール
-            'profile.last_name'       => 'required|string',
-            'profile.first_name'      => 'required|string',
-            'profile.last_name_kana'  => 'required|string',
-            'profile.first_name_kana' => 'required|string',
+            'profile.last_name'       => 'required|string|max:10',
+            'profile.first_name'      => 'required|string|max:10',
+            'profile.last_name_kana'  => 'required|string|max:14',
+            'profile.first_name_kana' => 'required|string|max:14',
             'profile.school_name'     => 'required|string',
             'profile.graduation_date' => 'required|string',
             'profile.sex'             => 'required|string',
@@ -39,37 +39,48 @@ class EntryFormRequest extends FormRequest
             'profile.face'            => 'required_without:profile._face.base64|image|mimes:jpeg,png,jpg,gif|max:2048',
 
             // 住所
-            'address.zip1'                 => 'required|string',
-            'address.zip2'                 => 'required|string',
-            'address.pref'                 => 'required|string',
-            'address.addr1'                => 'required|string',
-            'address.addr2'                => 'required|string',
-            'address.tel'                  => 'required|string',
+            'address.zip1'                 => 'required|string|max:3',
+            'address.zip2'                 => 'required|string|max:4',
+            'address.pref'                 => 'required|string|max:3',
+            'address.addr1'                => 'required|string|max:29',
+            'address.addr2'                => 'required|string|max:33',
+            'address.tel'                  => 'required|string|max:20',
+            'address.mobile'               => 'nullable|string|max:20',
             'address.contact_method'       => 'required|string',
             'address.other_contact_method' => 'required_if:address.contact_method,その他|nullable|string',
             'address.contact_time'         => 'required|string',
 
             // 帰省先
             'home.same_addr' => 'string',
-            'home.zip1'      => 'required_without:home.same_addr|nullable|string',
-            'home.zip2'      => 'required_without:home.same_addr|nullable|string',
-            'home.pref'      => 'required_without:home.same_addr|nullable|string',
-            'home.addr1'     => 'required_without:home.same_addr|nullable|string',
-            'home.addr2'     => 'required_without:home.same_addr|nullable|string',
-            'home.tel'       => 'required_without:home.same_addr|nullable|string',
+            'home.zip1'      => 'required_without:home.same_addr|nullable|string|max:3',
+            'home.zip2'      => 'required_without:home.same_addr|nullable|string|max:4',
+            'home.pref'      => 'required_without:home.same_addr|nullable|string|max:3',
+            'home.addr1'     => 'required_without:home.same_addr|nullable|string|max:29',
+            'home.addr2'     => 'required_without:home.same_addr|nullable|string|max:33',
+            'home.tel'       => 'required_without:home.same_addr|nullable|string|max:20',
+
+            // 緊急連絡先
+            'emergency.same_addr' => 'string',
+            'emergency.name'      => 'required_without:emergency.same_addr|nullable|string|max:14',
+            'emergency.zip1'      => 'required_without:emergency.same_addr|nullable|string|max:3',
+            'emergency.zip2'      => 'required_without:emergency.same_addr|nullable|string|max:4',
+            'emergency.pref'      => 'required_without:emergency.same_addr|nullable|string|max:3',
+            'emergency.addr1'     => 'required_without:emergency.same_addr|nullable|string|max:29',
+            'emergency.addr2'     => 'required_without:emergency.same_addr|nullable|string|max:33',
+            'emergency.tel'       => 'required_without:emergency.same_addr|nullable|string|max:20',
 
             // 学歴・職歴
-            'careers.*.content' => 'nullable|string|max:34',
+            'careers.*.content' => 'nullable|string|max:35',
             'careers.*.year'    => 'required_with:careers.*.content|nullable|string',
             'careers.*.month'   => 'required_with:careers.*.content|nullable|string',
 
             // 免許・資格
-            'licenses.*.content' => 'nullable|string|max:34',
+            'licenses.*.content' => 'nullable|string|max:35',
             'licenses.*.year'    => 'required_with:licenses.*.content|nullable|string',
             'licenses.*.month'   => 'required_with:licenses.*.content|nullable|string',
 
             // 賞罰
-            'rewards.*.content' => 'nullable|string|max:34',
+            'rewards.*.content' => 'nullable|string|max:35',
             'rewards.*.year'    => 'required_with:rewards.*.content|nullable|string',
             'rewards.*.month'   => 'required_with:rewards.*.content|nullable|string',
 
@@ -125,6 +136,7 @@ class EntryFormRequest extends FormRequest
             'address.addr1'                => '『住所情報：住所１』',
             'address.addr2'                => '『住所情報：住所２』',
             'address.tel'                  => '『住所情報：電話番号』',
+            'address.mobile'               => '『住所情報：携帯電話』',
             'address.contact_method'       => '『住所情報：連絡方法』',
             'address.other_contact_method' => '『住所情報：連絡方法(その他)』',
             'address.contact_time'         => '『住所情報：連絡可能時間帯』',
@@ -137,6 +149,16 @@ class EntryFormRequest extends FormRequest
             'home.addr1'     => '『帰省先住所：住所１』',
             'home.addr2'     => '『帰省先住所：住所２』',
             'home.tel'       => '『帰省先住所：電話番号』',
+
+            // 緊急連絡先
+            'emergency.same_addr' => '現住所と同じ',
+            'emergency.name'      => '『帰省先住所：氏名』',
+            'emergency.zip1'      => '『帰省先住所：郵便番号(上3桁)』',
+            'emergency.zip2'      => '『帰省先住所：郵便番号(下4桁)』',
+            'emergency.pref'      => '『帰省先住所：都道府県』',
+            'emergency.addr1'     => '『帰省先住所：住所１』',
+            'emergency.addr2'     => '『帰省先住所：住所２』',
+            'emergency.tel'       => '『帰省先住所：電話番号』',
 
             // 学歴・職歴
             'careers.*.content' => '『学歴・職歴:index：内容』',
@@ -190,6 +212,7 @@ class EntryFormRequest extends FormRequest
             'required_without' => ':attributeを入力してください',
             'image'            => ':attributeは画像ファイルを選択してください',
             'mimes'            => ':attributeは:values形式の画像ファイルを選択してください',
+            'max'              => ':attributeは:max文字以内で入力してください',
         ];
     }
 }
