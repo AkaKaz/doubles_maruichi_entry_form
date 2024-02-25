@@ -11,35 +11,33 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新卒採用エントリーフォーム | 仮設足場・仮設資材のレンタル｜マルイチ株式会社。｜採用特設サイト</title>
-    <link rel="apple-touch-icon" href="https://www.maruichi-yg.com/common/common/img/icon.png">
-    <link rel="stylesheet" type="text/css" href="https://www.maruichi-yg.com/common/css/reset.css">
-    <link rel="stylesheet" type="text/css"
-        href="https://www.maruichi-yg.com/common/css/common_rec.css?date=20231120131738">
-    <link rel="stylesheet" type="text/css"
-        href="https://www.maruichi-yg.com/common/css/common_smp_rec.css?date=20231120132508"
+    <link rel="apple-touch-icon" href="img/icon.png">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/common_rec.css?date=20231120131738">
+    <link rel="stylesheet" type="text/css" href="css/common_smp_rec.css?date=20231120132508"
         media="only screen and (max-width: 480px)">
-    <link rel="stylesheet" type="text/css" href="https://www.maruichi-yg.com/common/css/libs/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/libs/animate.css">
 
     <link href="https://fonts.googleapis.com/css?family=Cinzel|Open+Sans|Open+Sans+Condensed:700|Poppins|Reem+Kufi"
         rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://www.maruichi-yg.com/common/font/brandongrotesque.css">
-    <link rel="stylesheet" type="text/css" href="https://www.maruichi-yg.com/common/font/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="https://www.maruichi-yg.com/common/font/notosans.css">
+    <link rel="stylesheet" type="text/css" href="font/brandongrotesque.css">
+    <link rel="stylesheet" type="text/css" href="font/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="font/notosans.css">
 
-    <link rel="stylesheet" type="text/css" href="https://www.maruichi-yg.com/common/plugin/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="https://www.maruichi-yg.com/common/plugin/slick/slick-theme.css">
-    <link rel="stylesheet" type="text/css" href="https://www.maruichi-yg.com/common/plugin/colorbox/colorbox.css">
+    <link rel="stylesheet" type="text/css" href="plugin/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="plugin/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="plugin/colorbox/colorbox.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="https://www.maruichi-yg.com/common/js/libs/jquery.simple-sidebar.min.js"></script>
-    <script src="https://www.maruichi-yg.com/common/js/libs/imagesloaded.pkgd.min.js"></script>
-    <script src="https://www.maruichi-yg.com/common/js/libs/velocity.min.js"></script>
-    <script src="https://www.maruichi-yg.com/common/js/libs/jquery.cookie.js"></script>
-    <script src="https://www.maruichi-yg.com/common/plugin/slick/slick.min.js"></script>
-    <script src="https://www.maruichi-yg.com/common/plugin/colorbox/jquery.colorbox-min.js"></script>
+    <script src="js/libs/jquery.simple-sidebar.min.js"></script>
+    <script src="js/libs/imagesloaded.pkgd.min.js"></script>
+    <script src="js/libs/velocity.min.js"></script>
+    <script src="js/libs/jquery.cookie.js"></script>
+    <script src="plugin/slick/slick.min.js"></script>
+    <script src="plugin/colorbox/jquery.colorbox-min.js"></script>
 
     <script type="text/javascript" src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="each.js"></script>
+    <script type="text/javascript" src="js/each.js"></script>
     @yield('head')
 </head>
 
@@ -80,8 +78,8 @@
                 <div id="navbar-smp" class="smp-only"><i class="fa fa-fw fa-bars" aria-hidden="true"></i></div>
 
                 <h1 class="header-logo">
-                    <a href="https://www.maruichi-yg.com/recruit/"><img title="img title"
-                            src="https://www.maruichi-yg.com/common/img/logo_rec.png" width="228" height="48"></a>
+                    <a href="https://www.maruichi-yg.com/recruit/"><img title="img title" src="img/logo_rec.png"
+                            width="228" height="48"></a>
                 </h1>
 
                 <nav id="header-gnavi">
@@ -127,7 +125,7 @@
 
             <div class="footer-contents">
 
-                <img src="https://www.maruichi-yg.com/common/img/footer_logo.png" class="footer-logo">
+                <img src="img/footer_logo.png" class="footer-logo">
 
                 <h3 class="footer-title">“チャレンジする人が未来を創る”</h3>
 
