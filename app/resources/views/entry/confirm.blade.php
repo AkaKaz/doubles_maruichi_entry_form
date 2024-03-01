@@ -223,4 +223,10 @@
         </div>
 
     </form>
+
+    <style>
+        td {
+            word-break: break-word;
+        }
+    </style>
 @endsection
