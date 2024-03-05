@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MidCareerEntryController;
+use App\Http\Controllers\NewGraduateEntryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,11 @@ Route::prefix('mid-career')->group(function () {
     Route::post('/back', [MidCareerEntryController::class, 'back'])->name('mid-career.back');
     Route::post('/confirm', [MidCareerEntryController::class, 'confirm'])->name('mid-career.confirm');
     Route::post('/complete', [MidCareerEntryController::class, 'complete'])->name('mid-career.complete');
+});
+
+Route::prefix('new-graduate')->group(function () {
+    Route::get('/', [NewGraduateEntryController::class, 'index'])->name('new-graduate.index');
+    Route::post('/back', [NewGraduateEntryController::class, 'back'])->name('new-graduate.back');
+    Route::post('/confirm', [NewGraduateEntryController::class, 'confirm'])->name('new-graduate.confirm');
+    Route::post('/complete', [NewGraduateEntryController::class, 'complete'])->name('new-graduate.complete');
 });
