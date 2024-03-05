@@ -1,7 +1,9 @@
 @extends('template')
 
+@section('title', '中途採用エントリーフォーム')
+
 @section('title-area')
-    <h1 class="contents-main-title">新卒採用エントリーフォーム</h1>
+    <h1 class="contents-main-title">中途採用エントリーフォーム</h1>
     <span class="contents-sub-title">ENTRY FORM</span>
 @endsection
 
@@ -14,7 +16,7 @@
 
     <h2 class="entry-form-title">プロフィール情報の入力</h2>
 
-    <form name="form" method="post" id="form" action="complete">
+    <form name="form" method="post" id="form" action="{{ route('mid-career.complete') }}">
         @csrf
 
         {{-- プロフィール --}}
@@ -138,12 +140,12 @@
 
         <div class="form-box clearfix">
             <h3>プロフィール情報</h3>
-            <x-entry.profile-confirm :data="$data['profile']" />
+            <x-mid-career-entry.profile-confirm :data="$data['profile']" />
         </div>
 
         <div class="form-box clearfix">
             <h3>住所情報</h3>
-            <x-entry.address-confirm name="address" :data="$data['address']">
+            <x-mid-career-entry.address-confirm name="address" :data="$data['address']">
                 <x-slot:foot>
                     <tr>
                         <th>連絡方法</th>
@@ -163,7 +165,7 @@
                         </td>
                     </tr>
                 </x-slot:foot>
-            </x-entry.address-confirm>
+            </x-mid-career-entry.address-confirm>
         </div>
 
         <div class="form-box clearfix">
@@ -171,7 +173,7 @@
             @if (array_key_exists('same_addr', $data['home']))
                 <p style="padding: 20px;">{{ $data['home']['same_addr'] }}</p>
             @else
-                <x-entry.address-confirm name="home" :data="$data['home']" />
+                <x-mid-career-entry.address-confirm name="home" :data="$data['home']" />
             @endif
         </div>
 
@@ -180,39 +182,39 @@
             @if (array_key_exists('same_addr', $data['emergency']))
                 <p style="padding: 20px;">{{ $data['emergency']['same_addr'] }}</p>
             @else
-                <x-entry.address-confirm name="emergency" :data="$data['emergency']">
+                <x-mid-career-entry.address-confirm name="emergency" :data="$data['emergency']">
                     <x-slot:head>
                         <tr>
                             <th>氏名</th>
                             <td class="form-input-wide">{{ $data['emergency']['name'] }}</td>
                         </tr>
                     </x-slot>
-                </x-entry.address-confirm>
+                </x-mid-career-entry.address-confirm>
             @endif
         </div>
 
         <div class="form-box clearfix">
             <h3>学歴・職歴</h3>
-            <x-entry.resume-confirm count="14" name="careers" :data="$data['careers']" />
+            <x-mid-career-entry.resume-confirm count="14" name="careers" :data="$data['careers']" />
         </div>
 
         <div class="form-box clearfix">
             <h3>免許・資格</h3>
-            <x-entry.resume-confirm count="5" name="licenses" :data="$data['licenses']" />
+            <x-mid-career-entry.resume-confirm count="5" name="licenses" :data="$data['licenses']" />
         </div>
 
         <div class="form-box clearfix">
             <h3>賞罰</h3>
-            <x-entry.resume-confirm count="4" name="rewards" :data="$data['rewards']" />
+            <x-mid-career-entry.resume-confirm count="4" name="rewards" :data="$data['rewards']" />
         </div>
 
         <div class="form-box clearfix">
             <h3>身上書</h3>
-            <x-entry.personal-statement-confirm :data="$data['personal_statement']" />
+            <x-mid-career-entry.personal-statement-confirm :data="$data['personal_statement']" />
         </div>
 
         <div class="form-footer">
-            <button type="submit" formaction="/back">
+            <button type="submit" formaction="{{ route('mid-career.back') }}">
                 <span>入力内容を修正</span>
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
             </button>

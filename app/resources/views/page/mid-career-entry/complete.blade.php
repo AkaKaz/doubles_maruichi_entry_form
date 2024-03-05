@@ -1,5 +1,7 @@
 @extends('template')
 
+@section('title', '中途採用エントリーフォーム')
+
 @section('head')
     <style>
         .form-container {
@@ -13,7 +15,7 @@
 @endsection
 
 @section('title-area')
-    <h1 class="contents-main-title">新卒採用エントリーフォーム</h1>
+    <h1 class="contents-main-title">中途採用エントリーフォーム</h1>
     <span class="contents-sub-title">ENTRY FORM</span>
 @endsection
 

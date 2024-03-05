@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\EntryFormController;
+use App\Http\Controllers\MidCareerEntryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [EntryFormController::class, 'index']);
-Route::post('/back', [EntryFormController::class, 'back']);
-Route::post('/confirm', [EntryFormController::class, 'confirm']);
-Route::post('/complete', [EntryFormController::class, 'complete']);
+Route::get('/', fn () => redirect()->route('mid-career.index'));
+
+Route::prefix('mid-career')->group(function () {
+    Route::get('/', [MidCareerEntryController::class, 'index'])->name('mid-career.index');
+    Route::post('/back', [MidCareerEntryController::class, 'back'])->name('mid-career.back');
+    Route::post('/confirm', [MidCareerEntryController::class, 'confirm'])->name('mid-career.confirm');
+    Route::post('/complete', [MidCareerEntryController::class, 'complete'])->name('mid-career.complete');
+});

@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Mccarlosen\LaravelMpdf\Facades\LaravelMpdf;
 
-class EntryReceived extends Mailable
+class MidCareerEntryReceived extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +28,7 @@ class EntryReceived extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: config('entry-form.subject'),
+            subject: config('entry-form.mid-career.subject'),
         );
     }
 
@@ -38,7 +38,7 @@ class EntryReceived extends Mailable
     public function content(): Content
     {
         return new Content(
-            text: 'email.entry.received',
+            text: 'email.mid-career-entry.received',
             with: [
                 'data' => $this->data,
             ],
@@ -64,13 +64,13 @@ class EntryReceived extends Mailable
             'data' => $this->data,
         ];
 
-        $title = config('entry-form.resume_pdf');
+        $title = config('entry-form.mid-career.pdf.resume');
         $config = [
             'title' => $title,
         ];
 
         return Attachment::fromData(
-            fn () => LaravelMpdf::loadView('pdf/entry/resume', $data, [], $config)->Output('', 'S'),
+            fn () => LaravelMpdf::loadView('pdf/mid-career-entry/resume', $data, [], $config)->Output('', 'S'),
             $title
         )->withMime('application/pdf');
     }
@@ -81,13 +81,13 @@ class EntryReceived extends Mailable
             'data' => $this->data['personal_statement'],
         ];
 
-        $title = config('entry-form.personal_statement_pdf');
+        $title = config('entry-form.mid-career.pdf.personal-statement');
         $config = [
             'title' => $title,
         ];
 
         return Attachment::fromData(
-            fn () => LaravelMpdf::loadView('pdf/entry/personal-statement', $data, [], $config)->Output('', 'S'),
+            fn () => LaravelMpdf::loadView('pdf/mid-career-entry/personal-statement', $data, [], $config)->Output('', 'S'),
             $title
         )->withMime('application/pdf');
     }

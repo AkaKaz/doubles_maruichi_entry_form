@@ -1,5 +1,7 @@
 @extends('template')
 
+@section('title', '中途採用エントリーフォーム')
+
 @section('head')
     <style>
         .hide-address-form tr:not(:first-child) {
@@ -26,7 +28,7 @@
 @endsection
 
 @section('title-area')
-    <h1 class="contents-main-title">新卒採用エントリーフォーム</h1>
+    <h1 class="contents-main-title">中途採用エントリーフォーム</h1>
     <span class="contents-sub-title">ENTRY FORM</span>
 @endsection
 
@@ -42,7 +44,7 @@
     <h2 class="entry-form-title">プロフィール情報の入力</h2>
     <p class="entry-form-attention">※全ての項目が入力必須項目となります。</p>
 
-    <form name="form" method="post" id="form" action="confirm" enctype="multipart/form-data">
+    <form name="form" method="post" id="form" action="{{ route('mid-career.confirm') }}" enctype="multipart/form-data">
         @csrf
 
         <style>
@@ -71,14 +73,14 @@
 
             <h3>プロフィール情報</h3>
 
-            <x-entry.profile-form />
+            <x-mid-career-entry.profile-form />
         </div>
 
         <div class="form-box clearfix">
 
             <h3>住所情報</h3>
 
-            <x-entry.address-form name="address">
+            <x-mid-career-entry.address-form name="address">
                 <x-slot:foot>
                     <tr>
                         <th>携帯電話</th>
@@ -128,7 +130,7 @@
                         </td>
                     </tr>
                 </x-slot>
-            </x-entry.address-form>
+            </x-mid-career-entry.address-form>
         </div>
 
 
@@ -136,7 +138,7 @@
 
             <h3>帰省先住所</h3>
 
-            <x-entry.address-form name="home">
+            <x-mid-career-entry.address-form name="home">
                 <x-slot:head>
                     <tr>
                         <td colspan="2" class="form-input-check">
@@ -151,14 +153,14 @@
                         </td>
                     </tr>
                 </x-slot>
-            </x-entry.address-form>
+            </x-mid-career-entry.address-form>
         </div>
 
         <div id="emergency-form" class="form-box clearfix {{ old('emergency.same_addr') ? 'hide-address-form' : '' }}">
 
             <h3>緊急連絡先</h3>
 
-            <x-entry.address-form name="emergency">
+            <x-mid-career-entry.address-form name="emergency">
                 <x-slot:head>
                     <tr>
                         <td colspan="2" class="form-input-check">
@@ -183,12 +185,12 @@
                         </td>
                     </tr>
                 </x-slot>
-            </x-entry.address-form>
+            </x-mid-career-entry.address-form>
         </div>
 
         <div class="form-box clearfix">
             <h3>学歴・職歴</h3>
-            <x-entry.resume-form count="14" name="careers">
+            <x-mid-career-entry.resume-form count="14" name="careers">
                 <x-slot:head>
                     <tr>
                         <td colspan="2" class="form-input-check">
@@ -198,30 +200,30 @@
                         </td>
                     </tr>
                 </x-slot>
-            </x-entry.resume-form>
+            </x-mid-career-entry.resume-form>
         </div>
 
         <div class="form-box clearfix">
             <h3>免許・資格</h3>
-            <x-entry.resume-form count="5" name="licenses" />
+            <x-mid-career-entry.resume-form count="5" name="licenses" />
         </div>
 
         <div class="form-box clearfix">
             <h3>賞罰</h3>
-            <x-entry.resume-form count="4" name="rewards" />
+            <x-mid-career-entry.resume-form count="4" name="rewards" />
         </div>
 
         <div class="form-box clearfix">
             <h3>身上書</h3>
-            <x-entry.personal-statement-form />
+            <x-mid-career-entry.personal-statement-form />
         </div>
 
         <div class="form-footer">
-            <button type="reset" onClick="location.href='./'">
+            <button type="reset" formaction="{{ route('mid-career.index') }}" formmethod="GET">
                 <span>入力内容をクリア</span>
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
             </button>
-            <button type="submt" onClick="document.form.submit();">
+            <button type="submt">
                 <span>入力内容を確認</span>
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </button>
