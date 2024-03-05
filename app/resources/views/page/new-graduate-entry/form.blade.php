@@ -169,7 +169,7 @@
                             <div>
                                 <label>
                                     <input class="ha" type="checkbox" name="emergency[same_addr]" value="現住所と同じ"
-                                        onchange="changeemergencyAddress(this)"
+                                        onchange="changeEmergencyAddress(this)"
                                         {{ old('emergency.same_addr') ? 'checked' : '' }}>
                                     <span>現住所と同じ</span>
                                 </label>
