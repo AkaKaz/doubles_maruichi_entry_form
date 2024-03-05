@@ -53,19 +53,42 @@ class EntryReceived extends Mailable
     public function attachments(): array
     {
         return [
-            Attachment::fromData(
-                fn () => LaravelMpdf::loadView('pdf/entry/resume', [
-                    'data' => $this->data,
-                ])->Output('', 'S'),
-                config('entry-form.resume_pdf')
-            )->withMime('application/pdf'),
-
-            Attachment::fromData(
-                fn () => LaravelMpdf::loadView('pdf/entry/personal-statement', [
-                    'data' => $this->data['personal_statement'],
-                ])->Output('', 'S'),
-                config('entry-form.personal_statement_pdf')
-            )->withMime('application/pdf'),
+            $this->getResumePdfAttachment(),
+            $this->getPersonalStatementPdfAttachment(),
         ];
+    }
+
+    private function getResumePdfAttachment()
+    {
+        $data = [
+            'data' => $this->data,
+        ];
+
+        $title = config('entry-form.resume_pdf');
+        $config = [
+            'title' => $title,
+        ];
+
+        return Attachment::fromData(
+            fn () => LaravelMpdf::loadView('pdf/entry/resume', $data, [], $config)->Output('', 'S'),
+            $title
+        )->withMime('application/pdf');
+    }
+
+    private function getPersonalStatementPdfAttachment()
+    {
+        $data = [
+            'data' => $this->data['personal_statement'],
+        ];
+
+        $title = config('entry-form.personal_statement_pdf');
+        $config = [
+            'title' => $title,
+        ];
+
+        return Attachment::fromData(
+            fn () => LaravelMpdf::loadView('pdf/entry/personal-statement', $data, [], $config)->Output('', 'S'),
+            $title
+        )->withMime('application/pdf');
     }
 }
