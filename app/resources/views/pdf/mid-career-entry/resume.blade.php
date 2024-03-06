@@ -6,14 +6,14 @@
         html,
         body {
             font-family: source-han-serif, sans-serif;
-            font-size: 3.3mm;
+            font-size: 3.7mm;
             line-height: 1.6;
         }
 
         main {
-            width: 150mm;
+            width: 175mm;
             margin: auto;
-            padding: 9mm 0mm;
+            padding: 11mm 0mm 0mm;
         }
 
         table {
@@ -32,29 +32,29 @@
         }
 
         .cv-table th {
-            height: 6.5mm;
+            height: 8mm;
             text-align: center;
         }
 
         .cv-table td {
-            height: 6mm;
+            height: 7mm;
         }
 
         .cv-table th:nth-child(1),
         .cv-table td:nth-child(1) {
-            width: 20mm;
+            width: 23mm;
             text-align: center;
         }
 
         .cv-table th:nth-child(2),
         .cv-table td:nth-child(2) {
-            width: 8mm;
+            width: 9mm;
             text-align: center;
         }
 
         .cv-table th:nth-child(3),
         .cv-table td:nth-child(3) {
-            width: 122mm;
+            width: 143mm;
         }
     </style>
 </head>
@@ -64,27 +64,27 @@
     <main>
         <table class="w-full" style="border: none;">
             <tr>
-                <td style="padding: 0mm 0mm 2mm; ">
-                    <h1 class="align-bottom" style="font-size: 5mm; line-height: 1;">履　歴　書</h1>
+                <td style="height: 10mm; padding: 0mm 0mm 2mm;">
+                    <h1 class="align-bottom" style="font-size: 6mm; font-weight: 600; line-height: 1;">履　歴　書</h1>
                 </td>
-                <td class="text-right align-bottom" style="font-size: 2.9mm; padding: 2mm 0mm; line-height: 1;">
+                <td class="text-right align-bottom" style="font-size: 3.5mm; padding: 2mm 0mm; line-height: 1;">
                     {{ \Carbon\Carbon::now()->format('Y年 m月 d日現在') }}
                 </td>
             </tr>
         </table>
         <table class="w-full" style="border-top: 0.4mm solid #000;">
             <tr>
-                <td colspan="5" class="px-2" style="height: 6mm; border-bottom: 0.2mm solid #000;">
+                <td colspan="5" class="px-2" style="height: 7mm; border-bottom: 0.2mm solid #000;">
                     ふりがな　{{ $data['profile']['last_name_kana'] }} {{ $data['profile']['first_name_kana'] }}
                 </td>
                 <td rowspan="8" class="align-center" style="border: 0.2mm solid #000;">
                     <img src="data:{{ $data['profile']['_face']['mime'] }};base64,{{ $data['profile']['_face']['base64'] }}"
                         alt="写真"
-                        style="width: 35mm; height: 45mm; object-fit: contain; overflow: hidden; margin: auto;" />
+                        style="width: 40mm; height: 60mm; object-fit: contain; overflow: hidden; margin: 2mm 2.5mm;" />
                 </td>
             </tr>
             <tr>
-                <td colspan="5" class="px-2" style="height: 8.5mm; border-bottom: 0.2mm solid #000;">
+                <td colspan="5" class="px-2" style="height: 10mm; border-bottom: 0.2mm solid #000;">
                     氏　　名　<span class="text-xl">
                         {{ $data['profile']['last_name'] }}
                         {{ $data['profile']['first_name'] }}
@@ -92,7 +92,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="5" class="px-2" style="height: 6mm; border-bottom: 0.2mm solid #000;">
+                <td colspan="5" class="px-2" style="height: 7mm; border-bottom: 0.2mm solid #000;">
                     生年月日　{{ $data['profile']['birthday_year'] }}年
                     {{ $data['profile']['birthday_month'] }}月
                     {{ $data['profile']['birthday_day'] }}日生
@@ -102,13 +102,13 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2" class="px-2" style="height: 6mm; border-bottom: 0.2mm solid #000;">
+                <td colspan="2" class="px-2" style="height: 7mm; border-bottom: 0.2mm solid #000;">
                     現&nbsp;&nbsp;住&nbsp;&nbsp;所　〒 {{ $data['address']['zip1'] }} − {{ $data['address']['zip2'] }}
                 </td>
                 <td colspan="3"></td>
             </tr>
             <tr>
-                <td colspan="5" class="px-2" style="height: 10.5mm; border-bottom: 0.2mm solid #000;">
+                <td colspan="5" class="px-2" style="height: 12mm; border-bottom: 0.2mm solid #000;">
                     {{ MyStr::from($data['address']['pref'] . $data['address']['addr1'])->limit(33)->str() }}
                     <br>
                     {{ $data['address']['addr2'] }}
@@ -116,24 +116,24 @@
             </tr>
             <tr>
                 <td></td>
-                <td colspan="4" style="height: 6mm; border-bottom: 0.2mm solid #000;">
+                <td colspan="4" style="height: 7mm; border-bottom: 0.2mm solid #000;">
                     電話番号　{{ $data['address']['tel'] }}
                 </td>
             </tr>
             <tr>
                 <td></td>
-                <td colspan="4" style="height: 6mm; border-bottom: 0.2mm solid #000;">
+                <td colspan="4" style="height: 7mm; border-bottom: 0.2mm solid #000;">
                     携帯電話　{{ $data['address']['mobile'] }}
                 </td>
             </tr>
             <tr>
-                <td colspan="5" class="px-2" style="height: 5.5mm;">
+                <td colspan="5" class="px-2" style="height: 7mm;">
                     ＊緊急連絡先（現住所と異なる場合にのみ記入して下さい）
                 </td>
             </tr>
             <tr>
                 <td></td>
-                <td colspan="5" style="height: 6mm; border-top: 0.4mm solid #000; border-bottom: 0.2mm solid #000;">
+                <td colspan="5" style="height: 7mm; border-top: 0.2mm solid #000; border-bottom: 0.2mm solid #000;">
                     @if (!array_key_exists('same_addr', $data['emergency']))
                         @if (mb_strlen($data['emergency']['pref'] . $data['emergency']['addr1'] . $data['emergency']['addr2']) > 35)
                             住　　所　<span class="text-xs">
@@ -156,7 +156,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td colspan="2" style="height: 6mm; border-bottom: 0.2mm solid #000;">
+                <td colspan="2" style="height: 7mm; border-bottom: 0.2mm solid #000;">
                     @if (!array_key_exists('same_addr', $data['emergency']))
                         氏　　名　{{ $data['emergency']['name'] }}
                     @else
@@ -164,7 +164,7 @@
                     @endif
                 </td>
                 <td></td>
-                <td colspan="2" style="height: 6mm; border-bottom: 0.2mm solid #000;">
+                <td colspan="2" style="height: 7mm; border-bottom: 0.2mm solid #000;">
                     @if (!array_key_exists('same_addr', $data['emergency']))
                         連絡先電話番号　{{ $data['emergency']['tel'] }}
                     @else
@@ -173,12 +173,12 @@
                 </td>
             </tr>
             <tr>
-                <td style="width: 18mm;" />
-                <td style="width: 48mm;" />
-                <td style="width: 18mm;" />
-                <td style="width:  4mm;" />
-                <td style="width: 26mm;" />
-                <td style="width: 40mm;" />
+                <td style="width: 20mm;" />
+                <td style="width: 55mm;" />
+                <td style="width: 20mm;" />
+                <td style="width:  5mm;" />
+                <td style="width: 30mm;" />
+                <td style="width: 45mm;" />
             </tr>
         </table>
 

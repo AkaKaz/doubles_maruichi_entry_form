@@ -1,19 +1,23 @@
 <html>
 
+@php
+    const STATUS_TABLE_TEXTS = 42;
+@endphp
+
 <head>
     <link rel="stylesheet" type="text/css" href="css/tailwind.min.css" />
     <style>
         html,
         body {
             font-family: source-han-serif, sans-serif;
-            font-size: 3.2mm;
+            font-size: 3.7mm;
             line-height: 1.6;
         }
 
         main {
-            width: 150mm;
+            width: 180mm;
             margin: auto;
-            padding: 9mm 0mm;
+            padding: 11mm 0mm;
         }
 
         table {
@@ -22,24 +26,25 @@
 
         .status-table th,
         .status-table td {
-            height: 5.3mm;
+            height: 6.25mm;
         }
 
         .status-table th {
-            width: 20mm;
+            width: 23mm;
             font-size: 1rem;
             font-weight: normal;
             text-align: left;
         }
 
         .status-table td {
-            width: 130mm;
+            width: 157mm;
             border-bottom: 0.2mm solid #000;
         }
 
         .family-table td {
             border-bottom: 0.2mm solid #000;
-            height: 5.3mm;
+            height: 6.5mm;
+            padding: 0mm 1mm;
         }
 
         .family-table td:nth-child(2),
@@ -56,8 +61,8 @@
     <main>
         <table class="w-full" style="border: none;">
             <tr>
-                <td class="text-center align-bottom" style="padding: 0mm 0mm 7mm;">
-                    <h1 style="font-size: 5mm; line-height: 1;">身　　　上　　　書</h1>
+                <td class="text-center align-bottom" style="height: 15mm; padding: 0mm 0mm 9mm;">
+                    <h1 style="font-size: 6mm; font-weight: 600; line-height: 1;">身　　　上　　　書</h1>
                 </td>
             </tr>
         </table>
@@ -65,14 +70,14 @@
             <tr>
                 <th>＊志望の動機</th>
                 <td>
-                    {{ MyStr::from($data['reason'])->limit(40)->kana()->str() }}
+                    {{ MyStr::from($data['reason'])->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                 </td>
             </tr>
             @for ($i = 1; $i < 3; $i++)
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['reason'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['reason'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -84,7 +89,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['spirit'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['spirit'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -97,7 +102,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['strength'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['strength'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -109,7 +114,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['weakness'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['weakness'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -121,7 +126,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['attitude'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['attitude'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -147,7 +152,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['favorite_subject_level'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['favorite_subject_level'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -155,14 +160,14 @@
             <tr>
                 <th>＊スポーツ</td>
                 <td>
-                    {{ MyStr::from($data['sport'])->limit(40)->kana()->str() }}
+                    {{ MyStr::from($data['sport'])->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                 </td>
             </tr>
             @for ($i = 1; $i < 2; $i++)
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['sport'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['sport'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -170,14 +175,14 @@
             <tr>
                 <th>＊趣　　味</td>
                 <td>
-                    {{ MyStr::from($data['hobby'])->limit(40)->kana()->str() }}
+                    {{ MyStr::from($data['hobby'])->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                 </td>
             </tr>
             @for ($i = 1; $i < 2; $i++)
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['hobby'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['hobby'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -189,7 +194,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['desire'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['desire'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -200,11 +205,11 @@
                 <td colspan="5">＊家族構成（親・兄弟・祖父母を含め御記入下さい）</td>
             </tr>
             <tr>
-                <td class="text-center" style="width: 38mm;">氏　　　名</td>
-                <td class="text-center" style="width: 17mm;">続　柄</td>
-                <td class="text-center" style="width: 17mm;">年　齢</td>
-                <td class="text-center" style="width: 23mm;">同居・別居</td>
-                <td class="text-center" style="width: 55mm;">職業・勤務先</td>
+                <td class="text-center" style="width: 49mm;">氏　　　名</td>
+                <td class="text-center" style="width: 20mm;">続　柄</td>
+                <td class="text-center" style="width: 20mm;">年　齢</td>
+                <td class="text-center" style="width: 26mm;">同居・別居</td>
+                <td class="text-center" style="width: 65mm;">職業・勤務先</td>
             </tr>
             @for ($i = 1; $i <= 6; $i++)
                 <tr>
@@ -217,9 +222,10 @@
             @endfor
             <tr>
                 <td colspan="5">
-                    <span>＊通勤時間　{{ $data['commute_hour'] }} 時間　{{ $data['commute_minute'] }} 分</span>
-                    <span>　　　＊扶養家族数（配偶者除く）　{{ $data['dependents'] }}</span>
-                    <span>　　　＊配偶者　{{ $data['spouse'] }}</span>
+                    <span>＊通勤時間　{{ MyStr::from($data['commute_hour'])->lpad(2)->kana()->str() }}
+                        時間　{{ MyStr::from($data['commute_minute'])->lpad(2)->kana()->str() }} 分</span>
+                    <span>　　　　　＊扶養家族数（配偶者除く）　{{ MyStr::from($data['dependents'])->lpad(2)->kana()->str() }}</span>
+                    <span>　　　　　＊配偶者　{{ $data['spouse'] }}</span>
                 </td>
             </tr>
         </table>
