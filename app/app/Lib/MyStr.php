@@ -36,9 +36,16 @@ class MyStr
         return $this;
     }
 
-    public function padding(int $length): static
+    public function rpad(int $length): static
     {
         $this->text = mb_str_pad($this->text, $length, '　', STR_PAD_RIGHT);
+
+        return $this;
+    }
+
+    public function lpad(int $length): static
+    {
+        $this->text = mb_str_pad($this->text, $length, '　', STR_PAD_LEFT);
 
         return $this;
     }

@@ -133,7 +133,7 @@
                 <th></th>
                 <td>
                     @for ($i = 1; $i <= 6; $i++)
-                        <span>{{ mb_convert_kana($i, 'N') }}．{{ MyStr::from($data["favorite_subject{$i}"])->padding(4)->str() }}</span>
+                        <span>{{ mb_convert_kana($i, 'N') }}．{{ MyStr::from($data["favorite_subject{$i}"])->rpad(4)->str() }}</span>
                     @endfor
                 </td>
             </tr>
