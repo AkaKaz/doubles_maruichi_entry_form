@@ -1,19 +1,23 @@
 <html>
 
+@php
+    const STATUS_TABLE_TEXTS = 42;
+@endphp
+
 <head>
     <link rel="stylesheet" type="text/css" href="css/tailwind.min.css" />
     <style>
         html,
         body {
             font-family: source-han-serif, sans-serif;
-            font-size: 3.2mm;
+            font-size: 3.7mm;
             line-height: 1.6;
         }
 
         main {
-            width: 150mm;
+            width: 180mm;
             margin: auto;
-            padding: 9mm 0mm;
+            padding: 11mm 0mm;
         }
 
         table {
@@ -22,24 +26,24 @@
 
         .status-table th,
         .status-table td {
-            height: 5.3mm;
+            height: 6.25mm;
         }
 
         .status-table th {
-            width: 20mm;
+            width: 23mm;
             font-size: 1rem;
             font-weight: normal;
             text-align: left;
         }
 
         .status-table td {
-            width: 130mm;
+            width: 157mm;
             border-bottom: 0.2mm solid #000;
         }
 
         .family-table td {
             border-bottom: 0.2mm solid #000;
-            height: 5.3mm;
+            height: 6.5mm;
         }
 
         .family-table td:nth-child(2),
@@ -56,8 +60,8 @@
     <main>
         <table class="w-full" style="border: none;">
             <tr>
-                <td class="text-center align-bottom" style="padding: 0mm 0mm 7mm;">
-                    <h1 style="font-size: 5mm; line-height: 1;">身　　　上　　　書</h1>
+                <td class="text-center align-bottom" style="height: 15mm; padding: 0mm 0mm 9mm;">
+                    <h1 style="font-size: 6mm; font-weight: 600; line-height: 1;">身　　　上　　　書</h1>
                 </td>
             </tr>
         </table>
@@ -65,14 +69,14 @@
             <tr>
                 <th>＊志望の動機</th>
                 <td>
-                    {{ MyStr::from($data['reason'])->limit(40)->kana()->str() }}
+                    {{ MyStr::from($data['reason'])->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                 </td>
             </tr>
             @for ($i = 1; $i < 3; $i++)
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['reason'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['reason'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -84,7 +88,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['learned_about'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['learned_about'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -97,7 +101,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['strength'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['strength'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -109,7 +113,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['weakness'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['weakness'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -121,7 +125,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['focused'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['focused'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -147,7 +151,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['favorite_subject_level'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['favorite_subject_level'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -159,7 +163,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['activity'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['activity'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -167,14 +171,14 @@
             <tr>
                 <th>＊趣　　味</td>
                 <td>
-                    {{ MyStr::from($data['hobby'])->limit(40)->kana()->str() }}
+                    {{ MyStr::from($data['hobby'])->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                 </td>
             </tr>
             @for ($i = 1; $i < 2; $i++)
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['hobby'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['hobby'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -186,7 +190,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['desire'])->offset(40 * $i)->limit(40)->kana()->str() }}
+                        {{ MyStr::from($data['desire'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -194,7 +198,8 @@
             <tr>
                 <th>＊通勤時間</th>
                 <td>
-                    {{ $data['commute_hour'] }} 時間　{{ $data['commute_minute'] }} 分
+                    {{ MyStr::from($data['commute_hour'])->lpad(2)->kana()->str() }}
+                    時間　{{ MyStr::from($data['commute_minute'])->lpad(2)->kana()->str() }} 分
                 </td>
             </tr>
         </table>

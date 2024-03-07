@@ -70,41 +70,41 @@ class NewGraduateEntryRequest extends FormRequest
             'emergency.tel'       => 'required_without:emergency.same_addr|nullable|string|max:20',
 
             // 学歴
-            'educationals.*.content' => 'nullable|string|max:35',
+            'educationals.*.content' => 'nullable|string|max:36',
             'educationals.*.year'    => 'required_with:educationals.*.content|nullable|string',
             'educationals.*.month'   => 'required_with:educationals.*.content|nullable|string',
 
             // 免許・資格
-            'licenses.*.content' => 'nullable|string|max:35',
+            'licenses.*.content' => 'nullable|string|max:36',
             'licenses.*.year'    => 'required_with:licenses.*.content|nullable|string',
             'licenses.*.month'   => 'required_with:licenses.*.content|nullable|string',
 
             // 賞罰
-            'rewards.*.content' => 'nullable|string|max:35',
+            'rewards.*.content' => 'nullable|string|max:36',
             'rewards.*.year'    => 'required_with:rewards.*.content|nullable|string',
             'rewards.*.month'   => 'required_with:rewards.*.content|nullable|string',
 
             // アルバイト歴
-            'works.*.content' => 'nullable|string|max:35',
+            'works.*.content' => 'nullable|string|max:36',
             'works.*.year'    => 'required_with:works.*.content|nullable|string',
             'works.*.month'   => 'required_with:works.*.content|nullable|string',
 
             // 身上書
-            'personal_statement.reason'                 => 'required|string|max:120',
-            'personal_statement.learned_about'          => 'required|string|max:120',
-            'personal_statement.strength'               => 'required|string|max:120',
-            'personal_statement.weakness'               => 'required|string|max:120',
-            'personal_statement.focused'                => 'required|string|max:120',
+            'personal_statement.reason'                 => 'required|string|max:126',
+            'personal_statement.learned_about'          => 'required|string|max:126',
+            'personal_statement.strength'               => 'required|string|max:126',
+            'personal_statement.weakness'               => 'required|string|max:126',
+            'personal_statement.focused'                => 'required|string|max:126',
             'personal_statement.favorite_subject1'      => 'required|string',
             'personal_statement.favorite_subject2'      => 'required|string',
             'personal_statement.favorite_subject3'      => 'required|string',
             'personal_statement.favorite_subject4'      => 'required|string',
             'personal_statement.favorite_subject5'      => 'required|string',
             'personal_statement.favorite_subject6'      => 'required|string',
-            'personal_statement.favorite_subject_level' => 'required|string|max:80',
-            'personal_statement.activity'               => 'required|string|max:80',
-            'personal_statement.hobby'                  => 'required|string|max:80',
-            'personal_statement.desire'                 => 'required|string|max:120',
+            'personal_statement.favorite_subject_level' => 'required|string|max:84',
+            'personal_statement.activity'               => 'required|string|max:84',
+            'personal_statement.hobby'                  => 'required|string|max:84',
+            'personal_statement.desire'                 => 'required|string|max:126',
             'personal_statement.family.*.name'          => 'nullable|string|max:12',
             'personal_statement.commute_hour'           => 'required|string',
             'personal_statement.commute_minute'         => 'required|string',

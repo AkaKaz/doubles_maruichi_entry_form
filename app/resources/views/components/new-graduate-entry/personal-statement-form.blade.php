@@ -3,7 +3,7 @@
         <th>志望の動機</th>
         <td class="form-input-wide">
             <div>
-                <textarea name="personal_statement[reason]" class="input-text-l" maxlength="120">{{ old('personal_statement.reason') }}</textarea>
+                <textarea name="personal_statement[reason]" class="input-text-l" maxlength="126">{{ old('personal_statement.reason') }}</textarea>
             </div>
         </td>
     </tr>
@@ -11,7 +11,7 @@
         <th>当社を知ったきっかけ・メディア媒体</th>
         <td class="form-input-wide">
             <div>
-                <textarea name="personal_statement[learned_about]" class="input-text-l" maxlength="120">{{ old('personal_statement.learned_about') }}</textarea>
+                <textarea name="personal_statement[learned_about]" class="input-text-l" maxlength="126">{{ old('personal_statement.learned_about') }}</textarea>
             </div>
         </td>
     </tr>
@@ -19,7 +19,7 @@
         <th>セールスポイント</th>
         <td class="form-input-wide">
             <div>
-                <textarea name="personal_statement[strength]" class="input-text-l" maxlength="120">{{ old('personal_statement.strength') }}</textarea>
+                <textarea name="personal_statement[strength]" class="input-text-l" maxlength="126">{{ old('personal_statement.strength') }}</textarea>
                 <span class="form-table-caption">※長所を含め自覚する特筆事項</span>
             </div>
         </td>
@@ -28,7 +28,7 @@
         <th>ウイークポイント</th>
         <td class="form-input-wide">
             <div>
-                <textarea name="personal_statement[weakness]" class="input-text-l" maxlength="120">{{ old('personal_statement.weakness') }}</textarea>
+                <textarea name="personal_statement[weakness]" class="input-text-l" maxlength="126">{{ old('personal_statement.weakness') }}</textarea>
                 <span class="form-table-caption">※短所を含め自覚する苦手な事項</span>
             </div>
         </td>
@@ -36,7 +36,7 @@
     <tr>
         <th>学生時代に力を注いだこと</th>
         <td class="form-input-wide">
-            <textarea name="personal_statement[focused]" class="input-text-l" maxlength="120">{{ old('personal_statement.focused') }}</textarea>
+            <textarea name="personal_statement[focused]" class="input-text-l" maxlength="126">{{ old('personal_statement.focused') }}</textarea>
         </td>
     </tr>
     <tr>
@@ -69,7 +69,7 @@
         <th>1 番の学科はどの程度得意ですか？</th>
         <td class="form-input-wide">
             <div>
-                <textarea name="personal_statement[favorite_subject_level]" class="input-text-l" maxlength="80">{{ old('personal_statement.favorite_subject_level') }}</textarea>
+                <textarea name="personal_statement[favorite_subject_level]" class="input-text-l" maxlength="84">{{ old('personal_statement.favorite_subject_level') }}</textarea>
             </div>
         </td>
     </tr>
@@ -77,7 +77,7 @@
         <th>学内・外の部活動やクラブ活動</th>
         <td class="form-input-wide">
             <div>
-                <textarea name="personal_statement[activity]" class="input-text-l" maxlength="80">{{ old('personal_statement.activity') }}</textarea>
+                <textarea name="personal_statement[activity]" class="input-text-l" maxlength="84">{{ old('personal_statement.activity') }}</textarea>
             </div>
         </td>
     </tr>
@@ -85,7 +85,7 @@
         <th>趣味</th>
         <td class="form-input-wide">
             <div>
-                <textarea name="personal_statement[hobby]" class="input-text-l" maxlength="80">{{ old('personal_statement.hobby') }}</textarea>
+                <textarea name="personal_statement[hobby]" class="input-text-l" maxlength="84">{{ old('personal_statement.hobby') }}</textarea>
             </div>
         </td>
     </tr>
@@ -93,7 +93,7 @@
         <th>当社への希望記入欄</th>
         <td class="form-input-wide">
             <div>
-                <textarea name="personal_statement[desire]" class="input-text-l" maxlength="120">{{ old('personal_statement.desire') }}</textarea>
+                <textarea name="personal_statement[desire]" class="input-text-l" maxlength="126">{{ old('personal_statement.desire') }}</textarea>
                 <span class="form-table-caption">※職種・勤務時間・給与・勤務地・休日他</span>
             </div>
         </td>
