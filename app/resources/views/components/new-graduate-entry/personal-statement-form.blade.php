@@ -89,36 +89,20 @@
             </div>
         </td>
     </tr>
-    <tr>
-        <th>当社への希望記入欄</th>
-        <td class="form-input-wide">
-            <div>
-                <textarea name="personal_statement[desire]" class="input-text-l" maxlength="126">{{ old('personal_statement.desire') }}</textarea>
-                <span class="form-table-caption">※職種・勤務時間・給与・勤務地・休日他</span>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <th>通勤時間</th>
-        <td class="form-input-radio">
-            <div>
-                <select name="personal_statement[commute_hour]">
-                    @for ($hour = 0; $hour < 10; $hour++)
-                        <option {{ old('personal_statement.commute_hour') === "$hour" ? 'selected' : '' }}>
-                            {{ $hour }}</option>
-                    @endfor
-                </select>
-                <span>時間</span>
-            </div>
-            <div>
-                <select name="personal_statement[commute_minute]">
-                    @for ($minute = 0; $minute < 60; $minute++)
-                        <option {{ old('personal_statement.commute_minute') === "$minute" ? 'selected' : '' }}>
-                            {{ $minute }}</option>
-                    @endfor
-                </select>
-                <span>分</span>
-            </div>
-        </td>
-    </tr>
+    @foreach (config('const.work_places') as $work_place)
+        <tr>
+            @if ($loop->first)
+                <th rowspan="{{ count(config('const.work_places')) }}">希望就業場所</th>
+            @endif
+            <td class="form-input-radio">
+                <div>
+                    <label>
+                        <input type="checkbox" name="personal_statement[work_places][]" value="{{ $work_place }}"
+                            {{ in_array($work_place, old('personal_statement.work_places', [])) ? 'checked' : '' }} />
+                        {{ $work_place }}
+                    </label>
+                </div>
+            </td>
+        </tr>
+    @endforeach
 </table>

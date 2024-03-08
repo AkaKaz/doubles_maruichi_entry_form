@@ -56,6 +56,32 @@
         .cv-table td:nth-child(3) {
             width: 143mm;
         }
+
+        .work-table td,
+        .work-table th {
+            border: 0.2mm solid #000;
+            padding: 0mm 2mm;
+        }
+
+        .work-table th {
+            height: 8mm;
+            text-align: center;
+        }
+
+        .work-table td {
+            height: 7mm;
+        }
+
+        .work-table th:nth-child(1),
+        .work-table td:nth-child(1) {
+            width: 55mm;
+            text-align: center;
+        }
+
+        .work-table th:nth-child(2),
+        .work-table td:nth-child(2) {
+            width: 120mm;
+        }
     </style>
 </head>
 
@@ -134,42 +160,17 @@
             <tr>
                 <td></td>
                 <td colspan="5" style="height: 7mm; border-top: 0.2mm solid #000; border-bottom: 0.2mm solid #000;">
-                    @if (!array_key_exists('same_addr', $data['emergency']))
-                        @if (mb_strlen($data['emergency']['pref'] . $data['emergency']['addr1'] . $data['emergency']['addr2']) > 35)
-                            住　　所　<span class="text-xs">
-                                〒{{ $data['emergency']['zip1'] }}-{{ $data['emergency']['zip2'] }}&nbsp;{{ $data['emergency']['pref'] }}{{ $data['emergency']['addr1'] }}
-                                <br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                {{ $data['emergency']['addr2'] }}
-                            </span>
-                        @else
-                            住　　所　<span class="text-xs">
-                                〒{{ $data['emergency']['zip1'] }}-{{ $data['emergency']['zip2'] }}&nbsp;{{ $data['emergency']['pref'] }}{{ $data['emergency']['addr1'] }}{{ $data['emergency']['addr2'] }}
-                            </span>
-                        @endif
-                    @else
-                        住　　所
-                    @endif
+                    住　　所
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td colspan="2" style="height: 7mm; border-bottom: 0.2mm solid #000;">
-                    @if (!array_key_exists('same_addr', $data['emergency']))
-                        氏　　名　{{ $data['emergency']['name'] }}
-                    @else
-                        氏　　名
-                    @endif
+                    氏　　名
                 </td>
                 <td></td>
                 <td colspan="2" style="height: 7mm; border-bottom: 0.2mm solid #000;">
-                    @if (!array_key_exists('same_addr', $data['emergency']))
-                        連絡先電話番号　{{ $data['emergency']['tel'] }}
-                    @else
-                        連絡先電話番号
-                    @endif
+                    連絡先電話番号
                 </td>
             </tr>
             <tr>
@@ -188,7 +189,7 @@
                 <th>月</th>
                 <th>学　　歴　（学歴については高等学校卒業より記入する事）</th>
             </tr>
-            @for ($i = 1; $i <= 7; $i++)
+            @for ($i = 1; $i <= 4; $i++)
                 @if ($data['educationals'][$i]['content'])
                     <tr>
                         <td class="text-center">{{ $data['educationals'][$i]['year'] }}</td>
@@ -202,6 +203,13 @@
                         <td>　</td>
                     </tr>
                 @endif
+            @endfor
+            @for ($i = 1; $i <= 3; $i++)
+                <tr>
+                    <td>　</td>
+                    <td>　</td>
+                    <td>　</td>
+                </tr>
             @endfor
         </table>
 
@@ -251,22 +259,31 @@
             @endfor
         </table>
 
-        <table class="w-full cv-table" style="border-bottom: 0.4mm solid #000;">
+        <table class="w-full work-table" style="border-bottom: 0.4mm solid #000;">
             <tr>
-                <th>年</th>
-                <th>月</th>
+                <th>就業年月</th>
                 <th style="letter-spacing: 4.5mm;">アルバイト歴</th>
             </tr>
             @for ($i = 1; $i <= 6; $i++)
                 @if ($data['works'][$i]['content'])
                     <tr>
-                        <td class="text-center">{{ $data['works'][$i]['year'] }}</td>
-                        <td class="text-center">{{ $data['works'][$i]['month'] }}</td>
+                        <td class="text-center">
+                            {{ $data['works'][$i]['start_year'] }}年
+                            @if ($data['works'][$i]['start_month'] < 10)
+                                &nbsp;
+                            @endif
+                            {{ $data['works'][$i]['start_month'] }}月
+                            〜
+                            {{ $data['works'][$i]['end_year'] }}年
+                            @if ($data['works'][$i]['end_month'] < 10)
+                                &nbsp;
+                            @endif
+                            {{ $data['works'][$i]['end_month'] }}月
+                        </td>
                         <td>{{ $data['works'][$i]['content'] }}</td>
                     </tr>
                 @else
                     <tr>
-                        <td>　</td>
                         <td>　</td>
                         <td>　</td>
                     </tr>

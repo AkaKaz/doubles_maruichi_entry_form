@@ -59,35 +59,27 @@ class NewGraduateEntryRequest extends FormRequest
             'home.addr2'     => 'required_without:home.same_addr|nullable|string|max:33',
             'home.tel'       => 'required_without:home.same_addr|nullable|string|max:20',
 
-            // 緊急連絡先
-            'emergency.same_addr' => 'string',
-            'emergency.name'      => 'required_without:emergency.same_addr|nullable|string|max:14',
-            'emergency.zip1'      => 'required_without:emergency.same_addr|nullable|string|max:3',
-            'emergency.zip2'      => 'required_without:emergency.same_addr|nullable|string|max:4',
-            'emergency.pref'      => 'required_without:emergency.same_addr|nullable|string|max:3',
-            'emergency.addr1'     => 'required_without:emergency.same_addr|nullable|string|max:29',
-            'emergency.addr2'     => 'required_without:emergency.same_addr|nullable|string|max:33',
-            'emergency.tel'       => 'required_without:emergency.same_addr|nullable|string|max:20',
-
             // 学歴
-            'educationals.*.content' => 'nullable|string|max:36',
+            'educationals.*.content' => 'nullable|string|max:37',
             'educationals.*.year'    => 'required_with:educationals.*.content|nullable|string',
             'educationals.*.month'   => 'required_with:educationals.*.content|nullable|string',
 
             // 免許・資格
-            'licenses.*.content' => 'nullable|string|max:36',
+            'licenses.*.content' => 'nullable|string|max:37',
             'licenses.*.year'    => 'required_with:licenses.*.content|nullable|string',
             'licenses.*.month'   => 'required_with:licenses.*.content|nullable|string',
 
             // 賞罰
-            'rewards.*.content' => 'nullable|string|max:36',
+            'rewards.*.content' => 'nullable|string|max:37',
             'rewards.*.year'    => 'required_with:rewards.*.content|nullable|string',
             'rewards.*.month'   => 'required_with:rewards.*.content|nullable|string',
 
             // アルバイト歴
-            'works.*.content' => 'nullable|string|max:36',
-            'works.*.year'    => 'required_with:works.*.content|nullable|string',
-            'works.*.month'   => 'required_with:works.*.content|nullable|string',
+            'works.*.content'     => 'nullable|string|max:31',
+            'works.*.start_year'  => 'required_with:works.*.content|nullable|string',
+            'works.*.start_month' => 'required_with:works.*.content|nullable|string',
+            'works.*.end_year'    => 'required_with:works.*.content|nullable|string',
+            'works.*.end_month'   => 'required_with:works.*.content|nullable|string',
 
             // 身上書
             'personal_statement.reason'                 => 'required|string|max:126',
@@ -104,10 +96,7 @@ class NewGraduateEntryRequest extends FormRequest
             'personal_statement.favorite_subject_level' => 'required|string|max:84',
             'personal_statement.activity'               => 'required|string|max:84',
             'personal_statement.hobby'                  => 'required|string|max:84',
-            'personal_statement.desire'                 => 'required|string|max:126',
-            'personal_statement.family.*.name'          => 'nullable|string|max:12',
-            'personal_statement.commute_hour'           => 'required|string',
-            'personal_statement.commute_minute'         => 'required|string',
+            'personal_statement.work_places.*'          => 'string',
         ];
     }
 
@@ -149,16 +138,6 @@ class NewGraduateEntryRequest extends FormRequest
             'home.addr2'     => '『帰省先住所：住所２』',
             'home.tel'       => '『帰省先住所：電話番号』',
 
-            // 緊急連絡先
-            'emergency.same_addr' => '現住所と同じ',
-            'emergency.name'      => '『帰省先住所：氏名』',
-            'emergency.zip1'      => '『帰省先住所：郵便番号(上3桁)』',
-            'emergency.zip2'      => '『帰省先住所：郵便番号(下4桁)』',
-            'emergency.pref'      => '『帰省先住所：都道府県』',
-            'emergency.addr1'     => '『帰省先住所：住所１』',
-            'emergency.addr2'     => '『帰省先住所：住所２』',
-            'emergency.tel'       => '『帰省先住所：電話番号』',
-
             // 学歴
             'educationals.*.content' => '『学歴:index：内容』',
             'educationals.*.year'    => '『学歴:index：年』',
@@ -175,9 +154,11 @@ class NewGraduateEntryRequest extends FormRequest
             'rewards.*.month'   => '『賞罰:index：月』',
 
             // アルバイト歴
-            'works.*.content' => '『アルバイト歴:index：内容』',
-            'works.*.year'    => '『アルバイト歴:index：年』',
-            'works.*.month'   => '『アルバイト歴:index：月』',
+            'works.*.content'     => '『アルバイト歴:index：内容』',
+            'works.*.start_year'  => '『アルバイト歴:index：開始年』',
+            'works.*.start_month' => '『アルバイト歴:index：開始月』',
+            'works.*.end_year'    => '『アルバイト歴:index：終了年』',
+            'works.*.end_month'   => '『アルバイト歴:index：終了月』',
 
             // 身上書
             'personal_statement.reason'                 => '『身上書：志望の動機』',
@@ -194,9 +175,7 @@ class NewGraduateEntryRequest extends FormRequest
             'personal_statement.favorite_subject_level' => '『身上書：1番の学科はどの程度得意ですか？』',
             'personal_statement.activity'               => '『身上書：学内・外の部活動やクラブ活動』',
             'personal_statement.hobby'                  => '『身上書：趣味』',
-            'personal_statement.desire'                 => '『身上書：当社への希望記入欄』',
-            'personal_statement.commute_hour'           => '『身上書：通勤時間(時)』',
-            'personal_statement.commute_minute'         => '『身上書：通勤時間(分)』',
+            'personal_statement.work_places.*'          => '『身上書：希望就業場所』',
         ];
     }
 

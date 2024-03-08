@@ -183,25 +183,27 @@
                 </tr>
             @endfor
 
-            <tr>
-                <th colspan="2">＊当社への希望記入欄（職種・勤務時間・給与・勤務地・休日他）</th>
-            </tr>
-            @for ($i = 0; $i < 3; $i++)
-                <tr>
-                    <th></th>
-                    <td>
-                        {{ MyStr::from($data['desire'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
-                    </td>
-                </tr>
-            @endfor
+            @for ($i = 0; $i < count(config('const.work_places')); $i++)
+                @if ($i === 0)
+                    <tr>
+                        <th colspan="2">＊希望就業場所</th>
+                    </tr>
+                @endif
 
-            <tr>
-                <th>＊通勤時間</th>
-                <td>
-                    {{ MyStr::from($data['commute_hour'])->lpad(2)->kana()->str() }}
-                    時間　{{ MyStr::from($data['commute_minute'])->lpad(2)->kana()->str() }} 分
-                </td>
-            </tr>
+                @if (array_key_exists('work_places', $data) && $i < count($data['work_places']))
+                    <tr>
+                        <th></th>
+                        <td>
+                            {{ $data['work_places'][$i] }}
+                        </td>
+                    </tr>
+                @else
+                    <tr>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                @endif
+            @endfor
         </table>
     </main>
 

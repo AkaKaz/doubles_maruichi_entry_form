@@ -58,20 +58,8 @@
         <input name="home[addr2]" type="hidden" value="{{ $data['home']['addr2'] }}" />
         <input name="home[tel]" type="hidden" value="{{ $data['home']['tel'] }}" />
 
-        {{-- 緊急連絡先 --}}
-        @if (array_key_exists('same_addr', $data['emergency']))
-            <input name="emergency[same_addr]" type="hidden" value="{{ $data['emergency']['same_addr'] }}" />
-        @endif
-        <input name="emergency[name]" type="hidden" value="{{ $data['emergency']['name'] }}" />
-        <input name="emergency[zip1]" type="hidden" value="{{ $data['emergency']['zip1'] }}" />
-        <input name="emergency[zip2]" type="hidden" value="{{ $data['emergency']['zip2'] }}" />
-        <input name="emergency[pref]" type="hidden" value="{{ $data['emergency']['pref'] }}" />
-        <input name="emergency[addr1]" type="hidden" value="{{ $data['emergency']['addr1'] }}" />
-        <input name="emergency[addr2]" type="hidden" value="{{ $data['emergency']['addr2'] }}" />
-        <input name="emergency[tel]" type="hidden" value="{{ $data['emergency']['tel'] }}" />
-
         {{-- 学歴・職歴 --}}
-        @for ($i = 1; $i <= 7; $i++)
+        @for ($i = 1; $i <= 4; $i++)
             <input name="educationals[{{ $i }}][year]" type="hidden"
                 value="{{ $data['educationals'][$i]['year'] }}" />
             <input name="educationals[{{ $i }}][month]" type="hidden"
@@ -102,8 +90,14 @@
 
         {{-- アルバイト歴 --}}
         @for ($i = 1; $i <= 6; $i++)
-            <input name="works[{{ $i }}][year]" type="hidden" value="{{ $data['works'][$i]['year'] }}" />
-            <input name="works[{{ $i }}][month]" type="hidden" value="{{ $data['works'][$i]['month'] }}" />
+            <input name="works[{{ $i }}][start_year]" type="hidden"
+                value="{{ $data['works'][$i]['start_year'] }}" />
+            <input name="works[{{ $i }}][start_month]" type="hidden"
+                value="{{ $data['works'][$i]['start_month'] }}" />
+            <input name="works[{{ $i }}][end_year]" type="hidden"
+                value="{{ $data['works'][$i]['end_year'] }}" />
+            <input name="works[{{ $i }}][end_month]" type="hidden"
+                value="{{ $data['works'][$i]['end_month'] }}" />
             <input name="works[{{ $i }}][content]" type="hidden"
                 value="{{ $data['works'][$i]['content'] }}" />
         @endfor
@@ -126,11 +120,12 @@
         <input name="personal_statement[activity]" type="hidden"
             value="{{ $data['personal_statement']['activity'] }}" />
         <input name="personal_statement[hobby]" type="hidden" value="{{ $data['personal_statement']['hobby'] }}" />
-        <input name="personal_statement[desire]" type="hidden" value="{{ $data['personal_statement']['desire'] }}" />
-        <input name="personal_statement[commute_hour]" type="hidden"
-            value="{{ $data['personal_statement']['commute_hour'] }}" />
-        <input name="personal_statement[commute_minute]" type="hidden"
-            value="{{ $data['personal_statement']['commute_minute'] }}" />
+
+        @if (array_key_exists('work_places', $data['personal_statement']))
+            @foreach ($data['personal_statement']['work_places'] as $work_place)
+                <input name="personal_statement[work_places][]" type="hidden" value="{{ $work_place }}" />
+            @endforeach
+        @endif
 
         <div class="form-box clearfix">
             <h3>プロフィール情報</h3>
@@ -172,24 +167,8 @@
         </div>
 
         <div class="form-box clearfix">
-            <h3>緊急連絡先</h3>
-            @if (array_key_exists('same_addr', $data['emergency']))
-                <p style="padding: 20px;">{{ $data['emergency']['same_addr'] }}</p>
-            @else
-                <x-new-graduate-entry.address-confirm name="emergency" :data="$data['emergency']">
-                    <x-slot:head>
-                        <tr>
-                            <th>氏名</th>
-                            <td class="form-input-wide">{{ $data['emergency']['name'] }}</td>
-                        </tr>
-                    </x-slot>
-                </x-new-graduate-entry.address-confirm>
-            @endif
-        </div>
-
-        <div class="form-box clearfix">
             <h3>学歴</h3>
-            <x-new-graduate-entry.resume-confirm count="7" name="educationals" :data="$data['educationals']" />
+            <x-new-graduate-entry.resume-confirm count="4" name="educationals" :data="$data['educationals']" />
         </div>
 
         <div class="form-box clearfix">
@@ -204,7 +183,7 @@
 
         <div class="form-box clearfix">
             <h3>アルバイト歴</h3>
-            <x-new-graduate-entry.resume-confirm count="6" name="works" :data="$data['works']" />
+            <x-new-graduate-entry.work-confirm count="6" name="works" :data="$data['works']" />
         </div>
 
         <div class="form-box clearfix">
