@@ -13,6 +13,10 @@
         width: 200px;
     }
 
+    .input-form-cv .input-text-l {
+        max-width: 714px;
+    }
+
     .resume-table th {
         width: 20px;
         height: 1px;
