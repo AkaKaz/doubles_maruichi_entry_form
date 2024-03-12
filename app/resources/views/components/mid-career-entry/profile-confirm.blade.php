@@ -22,12 +22,6 @@
         </td>
     </tr>
     <tr>
-        <th>卒業年月日</th>
-        <td class="form-input-radio">
-            {{ $data['graduation_date'] }}
-        </td>
-    </tr>
-    <tr>
         <th>性 別</th>
         <td class="form-input-radio">
             {{ $data['sex'] }}

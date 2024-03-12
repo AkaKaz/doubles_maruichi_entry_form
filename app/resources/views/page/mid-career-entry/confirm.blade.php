@@ -25,7 +25,6 @@
         <input name="profile[last_name_kana]" type="hidden" value="{{ $data['profile']['last_name_kana'] }}" />
         <input name="profile[first_name_kana]" type="hidden" value="{{ $data['profile']['first_name_kana'] }}" />
         <input name="profile[school_name]" type="hidden" value="{{ $data['profile']['school_name'] }}" />
-        <input name="profile[graduation_date]" type="hidden" value="{{ $data['profile']['graduation_date'] }}" />
         <input name="profile[sex]" type="hidden" value="{{ $data['profile']['sex'] }}" />
         <input name="profile[birthday_year]" type="hidden" value="{{ $data['profile']['birthday_year'] }}" />
         <input name="profile[birthday_month]" type="hidden" value="{{ $data['profile']['birthday_month'] }}" />
