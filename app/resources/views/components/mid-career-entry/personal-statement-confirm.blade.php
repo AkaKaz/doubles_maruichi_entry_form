@@ -54,12 +54,23 @@
             {{ $data['hobby'] }}
         </td>
     </tr>
-    <tr>
-        <th>当社への希望記入欄</th>
-        <td class="form-input-wide">
-            {{ $data['desire'] }}
-        </td>
-    </tr>
+    @if (array_key_exists('work_places', $data))
+        @foreach ($data['work_places'] as $work_place)
+            <tr>
+                @if ($loop->first)
+                    <th rowspan="{{ count($data['work_places']) }}">希望就業場所</th>
+                @endif
+                <td class="form-input-wide">
+                    {{ $work_place }}
+                </td>
+            </tr>
+        @endforeach
+    @else
+        <tr>
+            <th>希望就業場所</th>
+            <td class="form-input-wide"></td>
+        </tr>
+    @endif
     <tr>
         <th>通勤時間</th>
         <td class="form-input-wide">

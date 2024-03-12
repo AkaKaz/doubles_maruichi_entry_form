@@ -103,7 +103,11 @@
             value="{{ $data['personal_statement']['favorite_subject_level'] }}" />
         <input name="personal_statement[sport]" type="hidden" value="{{ $data['personal_statement']['sport'] }}" />
         <input name="personal_statement[hobby]" type="hidden" value="{{ $data['personal_statement']['hobby'] }}" />
-        <input name="personal_statement[desire]" type="hidden" value="{{ $data['personal_statement']['desire'] }}" />
+        @if (array_key_exists('work_places', $data['personal_statement']))
+            @foreach ($data['personal_statement']['work_places'] as $work_place)
+                <input name="personal_statement[work_places][]" type="hidden" value="{{ $work_place }}" />
+            @endforeach
+        @endif
         <input name="personal_statement[commute_hour]" type="hidden"
             value="{{ $data['personal_statement']['commute_hour'] }}" />
         <input name="personal_statement[commute_minute]" type="hidden"

@@ -41,6 +41,23 @@
             border-bottom: 0.2mm solid #000;
         }
 
+        .work-table th,
+        .work-table td {
+            height: 6.25mm;
+        }
+
+        .work-table th {
+            width: 23mm;
+            font-size: 1rem;
+            font-weight: normal;
+            text-align: left;
+        }
+
+        .work-table td {
+            width: 78.5mm;
+            border-bottom: 0.2mm solid #000;
+        }
+
         .family-table td {
             border-bottom: 0.2mm solid #000;
             height: 6.5mm;
@@ -174,15 +191,27 @@
                     </td>
                 </tr>
             @endfor
+        </table>
 
-            <tr>
-                <th colspan="2">＊当社への希望記入欄（職種・勤務時間・給与・勤務地・休日他）</th>
-            </tr>
-            @for ($i = 0; $i < 3; $i++)
+        <table class="w-full work-table">
+            @for ($i = 0; $i < count(config('const.work_places')); $i += 2)
+                @if ($i === 0)
+                    <tr>
+                        <th colspan="3">＊希望就業場所</th>
+                    </tr>
+                @endif
+
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['desire'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
+                        @if (array_key_exists('work_places', $data) && $i < count($data['work_places']))
+                            {{ $data['work_places'][$i] }}
+                        @endif
+                    </td>
+                    <td>
+                        @if (array_key_exists('work_places', $data) && $i + 1 < count($data['work_places']))
+                            {{ $data['work_places'][$i + 1] }}
+                        @endif
                     </td>
                 </tr>
             @endfor
