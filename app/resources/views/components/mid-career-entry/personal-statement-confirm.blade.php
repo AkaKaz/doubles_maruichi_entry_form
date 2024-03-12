@@ -9,12 +9,6 @@
         </td>
     </tr>
     <tr>
-        <th>入社への意欲・心意気</th>
-        <td class="form-input-wide">
-            {{ $data['spirit'] }}
-        </td>
-    </tr>
-    <tr>
         <th>セールスポイント</th>
         <td class="form-input-wide">
             {{ $data['strength'] }}

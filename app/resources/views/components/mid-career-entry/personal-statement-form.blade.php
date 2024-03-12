@@ -8,14 +8,6 @@
         </td>
     </tr>
     <tr>
-        <th>入社への意欲・心意気</th>
-        <td class="form-input-wide">
-            <div>
-                <textarea name="personal_statement[spirit]" class="input-text-l" maxlength="126">{{ old('personal_statement.spirit') }}</textarea>
-            </div>
-        </td>
-    </tr>
-    <tr>
         <th>セールスポイント</th>
         <td class="form-input-wide">
             <div>

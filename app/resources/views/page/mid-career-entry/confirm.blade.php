@@ -89,7 +89,6 @@
 
         {{-- 身上書 --}}
         <input name="personal_statement[reason]" type="hidden" value="{{ $data['personal_statement']['reason'] }}" />
-        <input name="personal_statement[spirit]" type="hidden" value="{{ $data['personal_statement']['spirit'] }}" />
         <input name="personal_statement[strength]" type="hidden"
             value="{{ $data['personal_statement']['strength'] }}" />
         <input name="personal_statement[weakness]" type="hidden"

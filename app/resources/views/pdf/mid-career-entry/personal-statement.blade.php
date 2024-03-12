@@ -82,18 +82,6 @@
                 </tr>
             @endfor
 
-            <tr>
-                <th colspan="2">＊入社への意欲・心意気</th>
-            </tr>
-            @for ($i = 0; $i < 3; $i++)
-                <tr>
-                    <th></th>
-                    <td>
-                        {{ MyStr::from($data['spirit'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
-                    </td>
-                </tr>
-            @endfor
-
             {{-- セールスポイント --}}
             <tr>
                 <th colspan="2">＊セールスポイント（長所を含め自覚する特筆事項）</th>

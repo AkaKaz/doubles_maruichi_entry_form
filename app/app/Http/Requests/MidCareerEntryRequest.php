@@ -75,7 +75,6 @@ class MidCareerEntryRequest extends FormRequest
 
             // 身上書
             'personal_statement.reason'                 => 'required|string|max:126',
-            'personal_statement.spirit'                 => 'required|string|max:126',
             'personal_statement.strength'               => 'required|string|max:126',
             'personal_statement.weakness'               => 'required|string|max:126',
             'personal_statement.attitude'               => 'required|string|max:126',
@@ -155,7 +154,6 @@ class MidCareerEntryRequest extends FormRequest
 
             // 身上書
             'personal_statement.reason'                 => '『身上書：志望の動機』',
-            'personal_statement.spirit'                 => '『身上書：入社への意欲・心意気』',
             'personal_statement.strength'               => '『身上書：セールスポイント』',
             'personal_statement.weakness'               => '『身上書：ウイークポイント』',
             'personal_statement.attitude'               => '『身上書：仕事への取組姿勢・正確度・処理スピードに関して』',
