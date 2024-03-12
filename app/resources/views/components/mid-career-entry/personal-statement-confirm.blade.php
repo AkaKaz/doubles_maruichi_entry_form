@@ -60,20 +60,6 @@
             {{ $data['desire'] }}
         </td>
     </tr>
-    @for ($i = 1; $i <= 6; $i++)
-        <tr>
-            @if ($i === 1)
-                <th rowspan="6">家族構成</th>
-            @endif
-            <td class="form-input-wide">
-                家族{{ $i }}：
-                {{ $data['family'][$i]['name'] }}
-                ({{ $data['family'][$i]['relationship'] }}: {{ $data['family'][$i]['age'] }}歳)
-                {{ $data['family'][$i]['living'] }}
-                {{ $data['family'][$i]['work'] }}
-            </td>
-        </tr>
-    @endfor
     <tr>
         <th>通勤時間</th>
         <td class="form-input-wide">

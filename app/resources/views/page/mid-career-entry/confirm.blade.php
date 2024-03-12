@@ -104,18 +104,6 @@
         <input name="personal_statement[sport]" type="hidden" value="{{ $data['personal_statement']['sport'] }}" />
         <input name="personal_statement[hobby]" type="hidden" value="{{ $data['personal_statement']['hobby'] }}" />
         <input name="personal_statement[desire]" type="hidden" value="{{ $data['personal_statement']['desire'] }}" />
-        @for ($i = 1; $i <= 6; $i++)
-            <input name="personal_statement[family][{{ $i }}][name]" type="hidden"
-                value="{{ $data['personal_statement']['family'][$i]['name'] }}" />
-            <input name="personal_statement[family][{{ $i }}][relationship]" type="hidden"
-                value="{{ $data['personal_statement']['family'][$i]['relationship'] }}" />
-            <input name="personal_statement[family][{{ $i }}][age]" type="hidden"
-                value="{{ $data['personal_statement']['family'][$i]['age'] }}" />
-            <input name="personal_statement[family][{{ $i }}][work]" type="hidden"
-                value="{{ $data['personal_statement']['family'][$i]['work'] }}" />
-            <input name="personal_statement[family][{{ $i }}][living]" type="hidden"
-                value="{{ $data['personal_statement']['family'][$i]['living'] }}" />
-        @endfor
         <input name="personal_statement[commute_hour]" type="hidden"
             value="{{ $data['personal_statement']['commute_hour'] }}" />
         <input name="personal_statement[commute_minute]" type="hidden"

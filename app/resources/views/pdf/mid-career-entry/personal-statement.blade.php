@@ -190,25 +190,6 @@
 
         <table class="w-full family-table">
             <tr>
-                <td colspan="5">＊家族構成（親・兄弟・祖父母を含め御記入下さい）</td>
-            </tr>
-            <tr>
-                <td class="text-center" style="width: 49mm;">氏　　　名</td>
-                <td class="text-center" style="width: 20mm;">続　柄</td>
-                <td class="text-center" style="width: 20mm;">年　齢</td>
-                <td class="text-center" style="width: 26mm;">同居・別居</td>
-                <td class="text-center" style="width: 65mm;">職業・勤務先</td>
-            </tr>
-            @for ($i = 1; $i <= 6; $i++)
-                <tr>
-                    <td class="">{{ $data['family'][$i]['name'] }}</td>
-                    <td class="text-center">{{ $data['family'][$i]['relationship'] }}</td>
-                    <td class="text-right">{{ $data['family'][$i]['age'] }} 歳</td>
-                    <td class="text-center">{{ $data['family'][$i]['living'] }}</td>
-                    <td class="">{{ $data['family'][$i]['work'] }}</td>
-                </tr>
-            @endfor
-            <tr>
                 <td colspan="5">
                     <span>＊通勤時間　{{ MyStr::from($data['commute_hour'])->lpad(2)->kana()->str() }}
                         時間　{{ MyStr::from($data['commute_minute'])->lpad(2)->kana()->str() }} 分</span>
