@@ -113,10 +113,6 @@
                 <input name="personal_statement[work_jobs][]" type="hidden" value="{{ $work_job }}" />
             @endforeach
         @endif
-        <input name="personal_statement[commute_hour]" type="hidden"
-            value="{{ $data['personal_statement']['commute_hour'] }}" />
-        <input name="personal_statement[commute_minute]" type="hidden"
-            value="{{ $data['personal_statement']['commute_minute'] }}" />
         <input name="personal_statement[dependents]" type="hidden"
             value="{{ $data['personal_statement']['dependents'] }}" />
         <input name="personal_statement[spouse]" type="hidden" value="{{ $data['personal_statement']['spouse'] }}" />

@@ -93,13 +93,6 @@
         </tr>
     @endif
     <tr>
-        <th>通勤時間</th>
-        <td class="form-input-wide">
-            {{ $data['commute_hour'] }} 時間
-            {{ $data['commute_minute'] }} 分
-        </td>
-    </tr>
-    <tr>
         <th>
             扶養家族数
             <p>（配偶者除く）</p>

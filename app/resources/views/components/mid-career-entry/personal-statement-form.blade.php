@@ -118,29 +118,6 @@
         </tr>
     @endforeach
     <tr>
-        <th>通勤時間</th>
-        <td class="form-input-radio">
-            <div>
-                <select name="personal_statement[commute_hour]">
-                    @for ($hour = 0; $hour < 10; $hour++)
-                        <option {{ old('personal_statement.commute_hour') === "$hour" ? 'selected' : '' }}>
-                            {{ $hour }}</option>
-                    @endfor
-                </select>
-                <span>時間</span>
-            </div>
-            <div>
-                <select name="personal_statement[commute_minute]">
-                    @for ($minute = 0; $minute < 60; $minute++)
-                        <option {{ old('personal_statement.commute_minute') === "$minute" ? 'selected' : '' }}>
-                            {{ $minute }}</option>
-                    @endfor
-                </select>
-                <span>分</span>
-            </div>
-        </td>
-    </tr>
-    <tr>
         <th>
             扶養家族数
             <p>（配偶者除く）</p>

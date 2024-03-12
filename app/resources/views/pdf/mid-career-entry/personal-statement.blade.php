@@ -57,19 +57,6 @@
             width: 78.5mm;
             border-bottom: 0.2mm solid #000;
         }
-
-        .family-table td {
-            border-bottom: 0.2mm solid #000;
-            height: 6.5mm;
-            padding: 0mm 1mm;
-        }
-
-        .family-table td:nth-child(2),
-        .family-table td:nth-child(3),
-        .family-table td:nth-child(4) {
-            border-left: 0.2mm solid #000;
-            border-right: 0.2mm solid #000;
-        }
     </style>
 </head>
 
@@ -237,15 +224,21 @@
                     </td>
                 </tr>
             @endfor
-        </table>
 
-        <table class="w-full family-table">
             <tr>
-                <td colspan="5">
-                    <span>＊通勤時間　{{ MyStr::from($data['commute_hour'])->lpad(2)->kana()->str() }}
-                        時間　{{ MyStr::from($data['commute_minute'])->lpad(2)->kana()->str() }} 分</span>
-                    <span>　　　　　＊扶養家族数（配偶者除く）　{{ MyStr::from($data['dependents'])->lpad(2)->kana()->str() }}</span>
-                    <span>　　　　　＊配偶者　{{ $data['spouse'] }}</span>
+                <th colspan="3">＊扶養家族数（配偶者除く）</th>
+            </tr>
+            <tr>
+                <th></th>
+                <td colspan="2">
+                    {{ MyStr::from($data['dependents'])->lpad(2)->kana()->str() }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>＊配偶者</th>
+                <td colspan="2">
+                    {{ $data['spouse'] }}
                 </td>
             </tr>
         </table>
