@@ -215,6 +215,28 @@
                     </td>
                 </tr>
             @endfor
+
+            @for ($i = 0; $i < count(config('const.work_jobs')); $i += 2)
+                @if ($i === 0)
+                    <tr>
+                        <th colspan="3">＊希望就業職種</th>
+                    </tr>
+                @endif
+
+                <tr>
+                    <th></th>
+                    <td>
+                        @if (array_key_exists('work_jobs', $data) && $i < count($data['work_jobs']))
+                            {{ $data['work_jobs'][$i] }}
+                        @endif
+                    </td>
+                    <td>
+                        @if (array_key_exists('work_jobs', $data) && $i + 1 < count($data['work_jobs']))
+                            {{ $data['work_jobs'][$i + 1] }}
+                        @endif
+                    </td>
+                </tr>
+            @endfor
         </table>
 
         <table class="w-full family-table">

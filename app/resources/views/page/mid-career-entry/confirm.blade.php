@@ -108,6 +108,11 @@
                 <input name="personal_statement[work_places][]" type="hidden" value="{{ $work_place }}" />
             @endforeach
         @endif
+        @if (array_key_exists('work_jobs', $data['personal_statement']))
+            @foreach ($data['personal_statement']['work_jobs'] as $work_job)
+                <input name="personal_statement[work_jobs][]" type="hidden" value="{{ $work_job }}" />
+            @endforeach
+        @endif
         <input name="personal_statement[commute_hour]" type="hidden"
             value="{{ $data['personal_statement']['commute_hour'] }}" />
         <input name="personal_statement[commute_minute]" type="hidden"

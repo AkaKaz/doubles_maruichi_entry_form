@@ -72,6 +72,27 @@
         </tr>
     @endif
     <tr>
+        <th></th>
+        <td></td>
+    </tr>
+    @if (array_key_exists('work_jobs', $data))
+        @foreach ($data['work_jobs'] as $work_job)
+            <tr>
+                @if ($loop->first)
+                    <th rowspan="{{ count($data['work_jobs']) }}">希望就業職種</th>
+                @endif
+                <td class="form-input-wide">
+                    {{ $work_job }}
+                </td>
+            </tr>
+        @endforeach
+    @else
+        <tr>
+            <th>希望就業職種</th>
+            <td class="form-input-wide"></td>
+        </tr>
+    @endif
+    <tr>
         <th>通勤時間</th>
         <td class="form-input-wide">
             {{ $data['commute_hour'] }} 時間

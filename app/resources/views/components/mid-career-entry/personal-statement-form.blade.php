@@ -98,6 +98,26 @@
         </tr>
     @endforeach
     <tr>
+        <th></th>
+        <td></td>
+    </tr>
+    @foreach (config('const.work_jobs') as $work_job)
+        <tr>
+            @if ($loop->first)
+                <th rowspan="{{ count(config('const.work_jobs')) }}">希望就業職種</th>
+            @endif
+            <td class="form-input-radio">
+                <div>
+                    <label>
+                        <input type="checkbox" name="personal_statement[work_jobs][]" value="{{ $work_job }}"
+                            {{ in_array($work_job, old('personal_statement.work_jobs', [])) ? 'checked' : '' }} />
+                        {{ $work_job }}
+                    </label>
+                </div>
+            </td>
+        </tr>
+    @endforeach
+    <tr>
         <th>通勤時間</th>
         <td class="form-input-radio">
             <div>
