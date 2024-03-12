@@ -28,7 +28,6 @@ class MidCareerEntryRequest extends FormRequest
             'profile.last_name_kana'  => 'required|string|max:14',
             'profile.first_name_kana' => 'required|string|max:14',
             'profile.school_name'     => 'required|string',
-            'profile.graduation_date' => 'required|string',
             'profile.sex'             => 'required|string',
             'profile.birthday_year'   => 'required|string',
             'profile.birthday_month'  => 'required|string',
@@ -59,16 +58,6 @@ class MidCareerEntryRequest extends FormRequest
             'home.addr2'     => 'required_without:home.same_addr|nullable|string|max:33',
             'home.tel'       => 'required_without:home.same_addr|nullable|string|max:20',
 
-            // 緊急連絡先
-            'emergency.same_addr' => 'string',
-            'emergency.name'      => 'required_without:emergency.same_addr|nullable|string|max:14',
-            'emergency.zip1'      => 'required_without:emergency.same_addr|nullable|string|max:3',
-            'emergency.zip2'      => 'required_without:emergency.same_addr|nullable|string|max:4',
-            'emergency.pref'      => 'required_without:emergency.same_addr|nullable|string|max:3',
-            'emergency.addr1'     => 'required_without:emergency.same_addr|nullable|string|max:29',
-            'emergency.addr2'     => 'required_without:emergency.same_addr|nullable|string|max:33',
-            'emergency.tel'       => 'required_without:emergency.same_addr|nullable|string|max:20',
-
             // 学歴・職歴
             'careers.*.content' => 'nullable|string|max:37',
             'careers.*.year'    => 'required_with:careers.*.content|nullable|string',
@@ -86,7 +75,6 @@ class MidCareerEntryRequest extends FormRequest
 
             // 身上書
             'personal_statement.reason'                 => 'required|string|max:126',
-            'personal_statement.spirit'                 => 'required|string|max:126',
             'personal_statement.strength'               => 'required|string|max:126',
             'personal_statement.weakness'               => 'required|string|max:126',
             'personal_statement.attitude'               => 'required|string|max:126',
@@ -99,14 +87,8 @@ class MidCareerEntryRequest extends FormRequest
             'personal_statement.favorite_subject_level' => 'required|string|max:84',
             'personal_statement.sport'                  => 'required|string|max:84',
             'personal_statement.hobby'                  => 'required|string|max:84',
-            'personal_statement.desire'                 => 'required|string|max:126',
-            'personal_statement.family.*.name'          => 'nullable|string|max:12',
-            'personal_statement.family.*.relationship'  => 'required_with:personal_statement.family.*.name|nullable|string|max:3',
-            'personal_statement.family.*.age'           => 'required_with:personal_statement.family.*.name|nullable|string',
-            'personal_statement.family.*.work'          => 'required_with:personal_statement.family.*.name|nullable|string|max:16',
-            'personal_statement.family.*.living'        => 'required_with:personal_statement.family.*.name|nullable|string',
-            'personal_statement.commute_hour'           => 'required|string',
-            'personal_statement.commute_minute'         => 'required|string',
+            'personal_statement.work_places.*'          => 'string',
+            'personal_statement.work_jobs.*'            => 'string',
             'personal_statement.dependents'             => 'required|string',
             'personal_statement.spouse'                 => 'required|string',
         ];
@@ -121,7 +103,6 @@ class MidCareerEntryRequest extends FormRequest
             'profile.last_name_kana'  => '『プロフィール情報：フリガナ(シ)』',
             'profile.first_name_kana' => '『プロフィール情報：フリガナ(メイ)』',
             'profile.school_name'     => '『プロフィール情報：学校名』',
-            'profile.graduation_date' => '『プロフィール情報：卒業年月日』',
             'profile.sex'             => '『プロフィール情報：性別』',
             'profile.birthday_year'   => '『プロフィール情報：生年月日（年）』',
             'profile.birthday_month'  => '『プロフィール情報：生年月日（月）』',
@@ -150,16 +131,6 @@ class MidCareerEntryRequest extends FormRequest
             'home.addr2'     => '『帰省先住所：住所２』',
             'home.tel'       => '『帰省先住所：電話番号』',
 
-            // 緊急連絡先
-            'emergency.same_addr' => '現住所と同じ',
-            'emergency.name'      => '『帰省先住所：氏名』',
-            'emergency.zip1'      => '『帰省先住所：郵便番号(上3桁)』',
-            'emergency.zip2'      => '『帰省先住所：郵便番号(下4桁)』',
-            'emergency.pref'      => '『帰省先住所：都道府県』',
-            'emergency.addr1'     => '『帰省先住所：住所１』',
-            'emergency.addr2'     => '『帰省先住所：住所２』',
-            'emergency.tel'       => '『帰省先住所：電話番号』',
-
             // 学歴・職歴
             'careers.*.content' => '『学歴・職歴:index：内容』',
             'careers.*.year'    => '『学歴・職歴:index：年』',
@@ -177,7 +148,6 @@ class MidCareerEntryRequest extends FormRequest
 
             // 身上書
             'personal_statement.reason'                 => '『身上書：志望の動機』',
-            'personal_statement.spirit'                 => '『身上書：入社への意欲・心意気』',
             'personal_statement.strength'               => '『身上書：セールスポイント』',
             'personal_statement.weakness'               => '『身上書：ウイークポイント』',
             'personal_statement.attitude'               => '『身上書：仕事への取組姿勢・正確度・処理スピードに関して』',
@@ -190,14 +160,8 @@ class MidCareerEntryRequest extends FormRequest
             'personal_statement.favorite_subject_level' => '『身上書：1番の学科はどの程度得意ですか？』',
             'personal_statement.sport'                  => '『身上書：スポーツ』',
             'personal_statement.hobby'                  => '『身上書：趣味』',
-            'personal_statement.desire'                 => '『身上書：当社への希望記入欄』',
-            'personal_statement.family.*.name'          => '『身上書：家族構成:index：氏名』',
-            'personal_statement.family.*.relationship'  => '『身上書：家族構成:index：続柄』',
-            'personal_statement.family.*.age'           => '『身上書：家族構成:index：年齢』',
-            'personal_statement.family.*.work'          => '『身上書：家族構成:index：職業・勤務先』',
-            'personal_statement.family.*.living'        => '『身上書：家族構成:index：同居の有無』',
-            'personal_statement.commute_hour'           => '『身上書：通勤時間(時)』',
-            'personal_statement.commute_minute'         => '『身上書：通勤時間(分)』',
+            'personal_statement.work_places.*'          => '『身上書：希望就業場所』',
+            'personal_statement.work_jobs.*'            => '『身上書：希望就業職種』',
             'personal_statement.dependents'             => '『身上書：扶養家族数』',
             'personal_statement.spouse'                 => '『身上書：配偶者』',
         ];

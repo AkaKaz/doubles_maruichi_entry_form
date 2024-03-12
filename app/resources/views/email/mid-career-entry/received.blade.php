@@ -6,7 +6,6 @@
 　氏名： {{ $data['profile']['last_name'] }} {{ $data['profile']['first_name'] }}
 　フリガナ： {{ $data['profile']['last_name_kana'] }} {{ $data['profile']['first_name_kana'] }}
 　学校名： {{ $data['profile']['school_name'] }}
-　卒業年月日： {{ $data['profile']['graduation_date'] }}
 　性別： {{ $data['profile']['sex'] }}
 　生年月日： {{ $data['profile']['birthday_year'] }}/{{ $data['profile']['birthday_month'] }}/{{ $data['profile']['birthday_day'] }}
 　メールアドレス： {{ $data['profile']['email'] }}

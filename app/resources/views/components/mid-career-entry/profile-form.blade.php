@@ -39,31 +39,6 @@
         </td>
     </tr>
     <tr>
-        <th>卒業年月日</th>
-        <td class="form-input-radio">
-            <div>
-                <label>
-                    <input type="radio" name="profile[graduation_date]" value="既卒"
-                        {{ old('profile.graduation_date') == '既卒' ? 'checked' : '' }}>
-                    <span>既卒</span></label>
-            </div>
-            <div>
-                <label>
-                    <input type="radio" name="profile[graduation_date]" value="2025年3月卒業見込み"
-                        {{ old('profile.graduation_date') == '2025年3月卒業見込み' ? 'checked' : '' }}>
-                    <span>2025年3月卒業見込み</span>
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="radio" name="profile[graduation_date]" value="2026年3月卒業見込み"
-                        {{ old('profile.graduation_date') == '2026年3月卒業見込み' ? 'checked' : '' }}>
-                    <span>2026年3月卒業見込み</span>
-                </label>
-            </div>
-        </td>
-    </tr>
-    <tr>
         <th>性 別</th>
         <td class="form-input-radio">
             <div>

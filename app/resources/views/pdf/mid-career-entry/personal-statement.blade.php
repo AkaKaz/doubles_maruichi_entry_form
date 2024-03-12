@@ -41,17 +41,21 @@
             border-bottom: 0.2mm solid #000;
         }
 
-        .family-table td {
-            border-bottom: 0.2mm solid #000;
-            height: 6.5mm;
-            padding: 0mm 1mm;
+        .work-table th,
+        .work-table td {
+            height: 6.25mm;
         }
 
-        .family-table td:nth-child(2),
-        .family-table td:nth-child(3),
-        .family-table td:nth-child(4) {
-            border-left: 0.2mm solid #000;
-            border-right: 0.2mm solid #000;
+        .work-table th {
+            width: 23mm;
+            font-size: 1rem;
+            font-weight: normal;
+            text-align: left;
+        }
+
+        .work-table td {
+            width: 78.5mm;
+            border-bottom: 0.2mm solid #000;
         }
     </style>
 </head>
@@ -78,18 +82,6 @@
                     <th></th>
                     <td>
                         {{ MyStr::from($data['reason'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
-                    </td>
-                </tr>
-            @endfor
-
-            <tr>
-                <th colspan="2">＊入社への意欲・心意気</th>
-            </tr>
-            @for ($i = 0; $i < 3; $i++)
-                <tr>
-                    <th></th>
-                    <td>
-                        {{ MyStr::from($data['spirit'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
@@ -186,46 +178,67 @@
                     </td>
                 </tr>
             @endfor
+        </table>
 
-            <tr>
-                <th colspan="2">＊当社への希望記入欄（職種・勤務時間・給与・勤務地・休日他）</th>
-            </tr>
-            @for ($i = 0; $i < 3; $i++)
+        <table class="w-full work-table">
+            @for ($i = 0; $i < count(config('const.work_places')); $i += 2)
+                @if ($i === 0)
+                    <tr>
+                        <th colspan="3">＊希望就業場所</th>
+                    </tr>
+                @endif
+
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['desire'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
+                        @if (array_key_exists('work_places', $data) && $i < count($data['work_places']))
+                            {{ $data['work_places'][$i] }}
+                        @endif
+                    </td>
+                    <td>
+                        @if (array_key_exists('work_places', $data) && $i + 1 < count($data['work_places']))
+                            {{ $data['work_places'][$i + 1] }}
+                        @endif
                     </td>
                 </tr>
             @endfor
-        </table>
 
-        <table class="w-full family-table">
-            <tr>
-                <td colspan="5">＊家族構成（親・兄弟・祖父母を含め御記入下さい）</td>
-            </tr>
-            <tr>
-                <td class="text-center" style="width: 49mm;">氏　　　名</td>
-                <td class="text-center" style="width: 20mm;">続　柄</td>
-                <td class="text-center" style="width: 20mm;">年　齢</td>
-                <td class="text-center" style="width: 26mm;">同居・別居</td>
-                <td class="text-center" style="width: 65mm;">職業・勤務先</td>
-            </tr>
-            @for ($i = 1; $i <= 6; $i++)
+            @for ($i = 0; $i < count(config('const.work_jobs')); $i += 2)
+                @if ($i === 0)
+                    <tr>
+                        <th colspan="3">＊希望就業職種</th>
+                    </tr>
+                @endif
+
                 <tr>
-                    <td class="">{{ $data['family'][$i]['name'] }}</td>
-                    <td class="text-center">{{ $data['family'][$i]['relationship'] }}</td>
-                    <td class="text-right">{{ $data['family'][$i]['age'] }} 歳</td>
-                    <td class="text-center">{{ $data['family'][$i]['living'] }}</td>
-                    <td class="">{{ $data['family'][$i]['work'] }}</td>
+                    <th></th>
+                    <td>
+                        @if (array_key_exists('work_jobs', $data) && $i < count($data['work_jobs']))
+                            {{ $data['work_jobs'][$i] }}
+                        @endif
+                    </td>
+                    <td>
+                        @if (array_key_exists('work_jobs', $data) && $i + 1 < count($data['work_jobs']))
+                            {{ $data['work_jobs'][$i + 1] }}
+                        @endif
+                    </td>
                 </tr>
             @endfor
+
             <tr>
-                <td colspan="5">
-                    <span>＊通勤時間　{{ MyStr::from($data['commute_hour'])->lpad(2)->kana()->str() }}
-                        時間　{{ MyStr::from($data['commute_minute'])->lpad(2)->kana()->str() }} 分</span>
-                    <span>　　　　　＊扶養家族数（配偶者除く）　{{ MyStr::from($data['dependents'])->lpad(2)->kana()->str() }}</span>
-                    <span>　　　　　＊配偶者　{{ $data['spouse'] }}</span>
+                <th colspan="3">＊扶養家族数（配偶者除く）</th>
+            </tr>
+            <tr>
+                <th></th>
+                <td colspan="2">
+                    {{ MyStr::from($data['dependents'])->lpad(2)->kana()->str() }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>＊配偶者</th>
+                <td colspan="2">
+                    {{ $data['spouse'] }}
                 </td>
             </tr>
         </table>

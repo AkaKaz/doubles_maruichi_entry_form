@@ -8,14 +8,6 @@
         </td>
     </tr>
     <tr>
-        <th>入社への意欲・心意気</th>
-        <td class="form-input-wide">
-            <div>
-                <textarea name="personal_statement[spirit]" class="input-text-l" maxlength="126">{{ old('personal_statement.spirit') }}</textarea>
-            </div>
-        </td>
-    </tr>
-    <tr>
         <th>セールスポイント</th>
         <td class="form-input-wide">
             <div>
@@ -89,105 +81,42 @@
             </div>
         </td>
     </tr>
-    <tr>
-        <th>当社への希望記入欄</th>
-        <td class="form-input-wide">
-            <div>
-                <textarea name="personal_statement[desire]" class="input-text-l" maxlength="126">{{ old('personal_statement.desire') }}</textarea>
-                <span class="form-table-caption">※職種・勤務時間・給与・勤務地・休日他</span>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <th rowspan="24">家族構成</th>
-        <td>
-            <span class="form-table-caption">※親・兄弟・祖父母を含め御記入下さい</span>
-        </td>
-    </tr>
-    @for ($i = 1; $i <= 6; $i++)
+    @foreach (config('const.work_places') as $work_place)
         <tr>
-            <td>
-                <span>家族 {{ $i }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="form-input-name">
+            @if ($loop->first)
+                <th rowspan="{{ count(config('const.work_places')) }}">希望就業場所</th>
+            @endif
+            <td class="form-input-radio">
                 <div>
-                    <span>氏名</span>
-                    <input type="text" name="personal_statement[family][{{ $i }}][name]"
-                        value="{{ old("personal_statement.family.{$i}.name") }}" class="input-text-s" maxlength="12">
-                </div>
-                <div>
-                    <span>続柄</span>
-                    <input type="text" name="personal_statement[family][{{ $i }}][relationship]"
-                        value="{{ old("personal_statement.family.{$i}.relationship") }}" class="input-text-xs"
-                        maxlength="3">
-                </div>
-                <div>
-                    <span>年齢</span>
-                    <select name="personal_statement[family][{{ $i }}][age]">
-                        <option value=""> - </option>
-                        @for ($age = 0; $age < 100; $age++)
-                            <option {{ old("personal_statement.family.{$i}.age") === "$age" ? 'selected' : '' }}>
-                                {{ $age }}
-                            </option>
-                        @endfor
-                    </select>
+                    <label>
+                        <input type="checkbox" name="personal_statement[work_places][]" value="{{ $work_place }}"
+                            {{ in_array($work_place, old('personal_statement.work_places', [])) ? 'checked' : '' }} />
+                        {{ $work_place }}
+                    </label>
                 </div>
             </td>
         </tr>
+    @endforeach
+    <tr>
+        <th></th>
+        <td></td>
+    </tr>
+    @foreach (config('const.work_jobs') as $work_job)
         <tr>
-            <td class="form-input-name">
+            @if ($loop->first)
+                <th rowspan="{{ count(config('const.work_jobs')) }}">希望就業職種</th>
+            @endif
+            <td class="form-input-radio">
                 <div>
-                    <span>職業・勤務先</span>
-                    <input type="text" name="personal_statement[family][{{ $i }}][work]"
-                        value="{{ old("personal_statement.family.{$i}.work") }}" class="input-text-s" maxlength="16">
-                </div>
-                <div>
-                    <span>同居の有無</span>
-                    <select name="personal_statement[family][{{ $i }}][living]">
-                        <option value=""> - </option>
-                        <option {{ old("personal_statement.family.{$i}.living") === '同居' ? 'selected' : '' }}>
-                            同居
-                        </option>
-                        <option {{ old("personal_statement.family.{$i}.living") === '別居' ? 'selected' : '' }}>
-                            別居
-                        </option>
-                    </select>
+                    <label>
+                        <input type="checkbox" name="personal_statement[work_jobs][]" value="{{ $work_job }}"
+                            {{ in_array($work_job, old('personal_statement.work_jobs', [])) ? 'checked' : '' }} />
+                        {{ $work_job }}
+                    </label>
                 </div>
             </td>
         </tr>
-        @if ($i < 6)
-            <tr>
-                <td class="form-input-wide">
-                    <hr style="margin: 10px 0;">
-                </td>
-            </tr>
-        @endif
-    @endfor
-    <tr>
-        <th>通勤時間</th>
-        <td class="form-input-radio">
-            <div>
-                <select name="personal_statement[commute_hour]">
-                    @for ($hour = 0; $hour < 10; $hour++)
-                        <option {{ old('personal_statement.commute_hour') === "$hour" ? 'selected' : '' }}>
-                            {{ $hour }}</option>
-                    @endfor
-                </select>
-                <span>時間</span>
-            </div>
-            <div>
-                <select name="personal_statement[commute_minute]">
-                    @for ($minute = 0; $minute < 60; $minute++)
-                        <option {{ old('personal_statement.commute_minute') === "$minute" ? 'selected' : '' }}>
-                            {{ $minute }}</option>
-                    @endfor
-                </select>
-                <span>分</span>
-            </div>
-        </td>
-    </tr>
+    @endforeach
     <tr>
         <th>
             扶養家族数

@@ -134,42 +134,17 @@
             <tr>
                 <td></td>
                 <td colspan="5" style="height: 7mm; border-top: 0.2mm solid #000; border-bottom: 0.2mm solid #000;">
-                    @if (!array_key_exists('same_addr', $data['emergency']))
-                        @if (mb_strlen($data['emergency']['pref'] . $data['emergency']['addr1'] . $data['emergency']['addr2']) > 35)
-                            住　　所　<span class="text-xs">
-                                〒{{ $data['emergency']['zip1'] }}-{{ $data['emergency']['zip2'] }}&nbsp;{{ $data['emergency']['pref'] }}{{ $data['emergency']['addr1'] }}
-                                <br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                {{ $data['emergency']['addr2'] }}
-                            </span>
-                        @else
-                            住　　所　<span class="text-xs">
-                                〒{{ $data['emergency']['zip1'] }}-{{ $data['emergency']['zip2'] }}&nbsp;{{ $data['emergency']['pref'] }}{{ $data['emergency']['addr1'] }}{{ $data['emergency']['addr2'] }}
-                            </span>
-                        @endif
-                    @else
-                        住　　所
-                    @endif
+                    住　　所
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td colspan="2" style="height: 7mm; border-bottom: 0.2mm solid #000;">
-                    @if (!array_key_exists('same_addr', $data['emergency']))
-                        氏　　名　{{ $data['emergency']['name'] }}
-                    @else
-                        氏　　名
-                    @endif
+                    氏　　名
                 </td>
                 <td></td>
                 <td colspan="2" style="height: 7mm; border-bottom: 0.2mm solid #000;">
-                    @if (!array_key_exists('same_addr', $data['emergency']))
-                        連絡先電話番号　{{ $data['emergency']['tel'] }}
-                    @else
-                        連絡先電話番号
-                    @endif
+                    連絡先電話番号
                 </td>
             </tr>
             <tr>

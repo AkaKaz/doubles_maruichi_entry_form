@@ -9,12 +9,6 @@
         </td>
     </tr>
     <tr>
-        <th>入社への意欲・心意気</th>
-        <td class="form-input-wide">
-            {{ $data['spirit'] }}
-        </td>
-    </tr>
-    <tr>
         <th>セールスポイント</th>
         <td class="form-input-wide">
             {{ $data['strength'] }}
@@ -60,33 +54,44 @@
             {{ $data['hobby'] }}
         </td>
     </tr>
-    <tr>
-        <th>当社への希望記入欄</th>
-        <td class="form-input-wide">
-            {{ $data['desire'] }}
-        </td>
-    </tr>
-    @for ($i = 1; $i <= 6; $i++)
+    @if (array_key_exists('work_places', $data))
+        @foreach ($data['work_places'] as $work_place)
+            <tr>
+                @if ($loop->first)
+                    <th rowspan="{{ count($data['work_places']) }}">希望就業場所</th>
+                @endif
+                <td class="form-input-wide">
+                    {{ $work_place }}
+                </td>
+            </tr>
+        @endforeach
+    @else
         <tr>
-            @if ($i === 1)
-                <th rowspan="6">家族構成</th>
-            @endif
-            <td class="form-input-wide">
-                家族{{ $i }}：
-                {{ $data['family'][$i]['name'] }}
-                ({{ $data['family'][$i]['relationship'] }}: {{ $data['family'][$i]['age'] }}歳)
-                {{ $data['family'][$i]['living'] }}
-                {{ $data['family'][$i]['work'] }}
-            </td>
+            <th>希望就業場所</th>
+            <td class="form-input-wide"></td>
         </tr>
-    @endfor
+    @endif
     <tr>
-        <th>通勤時間</th>
-        <td class="form-input-wide">
-            {{ $data['commute_hour'] }} 時間
-            {{ $data['commute_minute'] }} 分
-        </td>
+        <th></th>
+        <td></td>
     </tr>
+    @if (array_key_exists('work_jobs', $data))
+        @foreach ($data['work_jobs'] as $work_job)
+            <tr>
+                @if ($loop->first)
+                    <th rowspan="{{ count($data['work_jobs']) }}">希望就業職種</th>
+                @endif
+                <td class="form-input-wide">
+                    {{ $work_job }}
+                </td>
+            </tr>
+        @endforeach
+    @else
+        <tr>
+            <th>希望就業職種</th>
+            <td class="form-input-wide"></td>
+        </tr>
+    @endif
     <tr>
         <th>
             扶養家族数

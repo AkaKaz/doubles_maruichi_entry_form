@@ -25,7 +25,6 @@
         <input name="profile[last_name_kana]" type="hidden" value="{{ $data['profile']['last_name_kana'] }}" />
         <input name="profile[first_name_kana]" type="hidden" value="{{ $data['profile']['first_name_kana'] }}" />
         <input name="profile[school_name]" type="hidden" value="{{ $data['profile']['school_name'] }}" />
-        <input name="profile[graduation_date]" type="hidden" value="{{ $data['profile']['graduation_date'] }}" />
         <input name="profile[sex]" type="hidden" value="{{ $data['profile']['sex'] }}" />
         <input name="profile[birthday_year]" type="hidden" value="{{ $data['profile']['birthday_year'] }}" />
         <input name="profile[birthday_month]" type="hidden" value="{{ $data['profile']['birthday_month'] }}" />
@@ -57,18 +56,6 @@
         <input name="home[addr1]" type="hidden" value="{{ $data['home']['addr1'] }}" />
         <input name="home[addr2]" type="hidden" value="{{ $data['home']['addr2'] }}" />
         <input name="home[tel]" type="hidden" value="{{ $data['home']['tel'] }}" />
-
-        {{-- 緊急連絡先 --}}
-        @if (array_key_exists('same_addr', $data['emergency']))
-            <input name="emergency[same_addr]" type="hidden" value="{{ $data['emergency']['same_addr'] }}" />
-        @endif
-        <input name="emergency[name]" type="hidden" value="{{ $data['emergency']['name'] }}" />
-        <input name="emergency[zip1]" type="hidden" value="{{ $data['emergency']['zip1'] }}" />
-        <input name="emergency[zip2]" type="hidden" value="{{ $data['emergency']['zip2'] }}" />
-        <input name="emergency[pref]" type="hidden" value="{{ $data['emergency']['pref'] }}" />
-        <input name="emergency[addr1]" type="hidden" value="{{ $data['emergency']['addr1'] }}" />
-        <input name="emergency[addr2]" type="hidden" value="{{ $data['emergency']['addr2'] }}" />
-        <input name="emergency[tel]" type="hidden" value="{{ $data['emergency']['tel'] }}" />
 
         {{-- 学歴・職歴 --}}
         @for ($i = 1; $i <= 14; $i++)
@@ -102,7 +89,6 @@
 
         {{-- 身上書 --}}
         <input name="personal_statement[reason]" type="hidden" value="{{ $data['personal_statement']['reason'] }}" />
-        <input name="personal_statement[spirit]" type="hidden" value="{{ $data['personal_statement']['spirit'] }}" />
         <input name="personal_statement[strength]" type="hidden"
             value="{{ $data['personal_statement']['strength'] }}" />
         <input name="personal_statement[weakness]" type="hidden"
@@ -117,23 +103,16 @@
             value="{{ $data['personal_statement']['favorite_subject_level'] }}" />
         <input name="personal_statement[sport]" type="hidden" value="{{ $data['personal_statement']['sport'] }}" />
         <input name="personal_statement[hobby]" type="hidden" value="{{ $data['personal_statement']['hobby'] }}" />
-        <input name="personal_statement[desire]" type="hidden" value="{{ $data['personal_statement']['desire'] }}" />
-        @for ($i = 1; $i <= 6; $i++)
-            <input name="personal_statement[family][{{ $i }}][name]" type="hidden"
-                value="{{ $data['personal_statement']['family'][$i]['name'] }}" />
-            <input name="personal_statement[family][{{ $i }}][relationship]" type="hidden"
-                value="{{ $data['personal_statement']['family'][$i]['relationship'] }}" />
-            <input name="personal_statement[family][{{ $i }}][age]" type="hidden"
-                value="{{ $data['personal_statement']['family'][$i]['age'] }}" />
-            <input name="personal_statement[family][{{ $i }}][work]" type="hidden"
-                value="{{ $data['personal_statement']['family'][$i]['work'] }}" />
-            <input name="personal_statement[family][{{ $i }}][living]" type="hidden"
-                value="{{ $data['personal_statement']['family'][$i]['living'] }}" />
-        @endfor
-        <input name="personal_statement[commute_hour]" type="hidden"
-            value="{{ $data['personal_statement']['commute_hour'] }}" />
-        <input name="personal_statement[commute_minute]" type="hidden"
-            value="{{ $data['personal_statement']['commute_minute'] }}" />
+        @if (array_key_exists('work_places', $data['personal_statement']))
+            @foreach ($data['personal_statement']['work_places'] as $work_place)
+                <input name="personal_statement[work_places][]" type="hidden" value="{{ $work_place }}" />
+            @endforeach
+        @endif
+        @if (array_key_exists('work_jobs', $data['personal_statement']))
+            @foreach ($data['personal_statement']['work_jobs'] as $work_job)
+                <input name="personal_statement[work_jobs][]" type="hidden" value="{{ $work_job }}" />
+            @endforeach
+        @endif
         <input name="personal_statement[dependents]" type="hidden"
             value="{{ $data['personal_statement']['dependents'] }}" />
         <input name="personal_statement[spouse]" type="hidden" value="{{ $data['personal_statement']['spouse'] }}" />
@@ -174,22 +153,6 @@
                 <p style="padding: 20px;">{{ $data['home']['same_addr'] }}</p>
             @else
                 <x-mid-career-entry.address-confirm name="home" :data="$data['home']" />
-            @endif
-        </div>
-
-        <div class="form-box clearfix">
-            <h3>緊急連絡先</h3>
-            @if (array_key_exists('same_addr', $data['emergency']))
-                <p style="padding: 20px;">{{ $data['emergency']['same_addr'] }}</p>
-            @else
-                <x-mid-career-entry.address-confirm name="emergency" :data="$data['emergency']">
-                    <x-slot:head>
-                        <tr>
-                            <th>氏名</th>
-                            <td class="form-input-wide">{{ $data['emergency']['name'] }}</td>
-                        </tr>
-                    </x-slot>
-                </x-mid-career-entry.address-confirm>
             @endif
         </div>
 
