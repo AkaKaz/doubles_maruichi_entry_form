@@ -57,18 +57,6 @@
         <input name="home[addr2]" type="hidden" value="{{ $data['home']['addr2'] }}" />
         <input name="home[tel]" type="hidden" value="{{ $data['home']['tel'] }}" />
 
-        {{-- 緊急連絡先 --}}
-        @if (array_key_exists('same_addr', $data['emergency']))
-            <input name="emergency[same_addr]" type="hidden" value="{{ $data['emergency']['same_addr'] }}" />
-        @endif
-        <input name="emergency[name]" type="hidden" value="{{ $data['emergency']['name'] }}" />
-        <input name="emergency[zip1]" type="hidden" value="{{ $data['emergency']['zip1'] }}" />
-        <input name="emergency[zip2]" type="hidden" value="{{ $data['emergency']['zip2'] }}" />
-        <input name="emergency[pref]" type="hidden" value="{{ $data['emergency']['pref'] }}" />
-        <input name="emergency[addr1]" type="hidden" value="{{ $data['emergency']['addr1'] }}" />
-        <input name="emergency[addr2]" type="hidden" value="{{ $data['emergency']['addr2'] }}" />
-        <input name="emergency[tel]" type="hidden" value="{{ $data['emergency']['tel'] }}" />
-
         {{-- 学歴・職歴 --}}
         @for ($i = 1; $i <= 14; $i++)
             <input name="careers[{{ $i }}][year]" type="hidden"
@@ -173,22 +161,6 @@
                 <p style="padding: 20px;">{{ $data['home']['same_addr'] }}</p>
             @else
                 <x-mid-career-entry.address-confirm name="home" :data="$data['home']" />
-            @endif
-        </div>
-
-        <div class="form-box clearfix">
-            <h3>緊急連絡先</h3>
-            @if (array_key_exists('same_addr', $data['emergency']))
-                <p style="padding: 20px;">{{ $data['emergency']['same_addr'] }}</p>
-            @else
-                <x-mid-career-entry.address-confirm name="emergency" :data="$data['emergency']">
-                    <x-slot:head>
-                        <tr>
-                            <th>氏名</th>
-                            <td class="form-input-wide">{{ $data['emergency']['name'] }}</td>
-                        </tr>
-                    </x-slot>
-                </x-mid-career-entry.address-confirm>
             @endif
         </div>
 

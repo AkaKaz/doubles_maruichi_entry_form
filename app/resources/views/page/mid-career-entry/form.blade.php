@@ -16,14 +16,6 @@
             else
                 homeForm.classList.remove('hide-address-form');
         }
-
-        function changeEmergencyAddress(value) {
-            const emergencyForm = document.getElementById('emergency-form');
-            if (value.checked)
-                emergencyForm.classList.add('hide-address-form');
-            else
-                emergencyForm.classList.remove('hide-address-form');
-        }
     </script>
 @endsection
 
@@ -149,38 +141,6 @@
                                         onchange="changeHomeAddress(this)" {{ old('home.same_addr') ? 'checked' : '' }}>
                                     <span>現住所と同じ</span>
                                 </label>
-                            </div>
-                        </td>
-                    </tr>
-                </x-slot>
-            </x-mid-career-entry.address-form>
-        </div>
-
-        <div id="emergency-form" class="form-box clearfix {{ old('emergency.same_addr') ? 'hide-address-form' : '' }}">
-
-            <h3>緊急連絡先</h3>
-
-            <x-mid-career-entry.address-form name="emergency">
-                <x-slot:head>
-                    <tr>
-                        <td colspan="2" class="form-input-check">
-                            <div>現住所と異なる場合は入力して下さい。現住所と同様の場合はチェックして下さい。</div>
-                            <div>
-                                <label>
-                                    <input class="ha" type="checkbox" name="emergency[same_addr]" value="現住所と同じ"
-                                        onchange="changeEmergencyAddress(this)"
-                                        {{ old('emergency.same_addr') ? 'checked' : '' }}>
-                                    <span>現住所と同じ</span>
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>氏名</th>
-                        <td class="form-input-wide">
-                            <div>
-                                <input type="text" name="emergency[name]" class="input-text-l" maxlength="14"
-                                    value="{{ old('emergency.name') }}">
                             </div>
                         </td>
                     </tr>

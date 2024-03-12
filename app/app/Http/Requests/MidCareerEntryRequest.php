@@ -58,16 +58,6 @@ class MidCareerEntryRequest extends FormRequest
             'home.addr2'     => 'required_without:home.same_addr|nullable|string|max:33',
             'home.tel'       => 'required_without:home.same_addr|nullable|string|max:20',
 
-            // 緊急連絡先
-            'emergency.same_addr' => 'string',
-            'emergency.name'      => 'required_without:emergency.same_addr|nullable|string|max:14',
-            'emergency.zip1'      => 'required_without:emergency.same_addr|nullable|string|max:3',
-            'emergency.zip2'      => 'required_without:emergency.same_addr|nullable|string|max:4',
-            'emergency.pref'      => 'required_without:emergency.same_addr|nullable|string|max:3',
-            'emergency.addr1'     => 'required_without:emergency.same_addr|nullable|string|max:29',
-            'emergency.addr2'     => 'required_without:emergency.same_addr|nullable|string|max:33',
-            'emergency.tel'       => 'required_without:emergency.same_addr|nullable|string|max:20',
-
             // 学歴・職歴
             'careers.*.content' => 'nullable|string|max:37',
             'careers.*.year'    => 'required_with:careers.*.content|nullable|string',
@@ -147,16 +137,6 @@ class MidCareerEntryRequest extends FormRequest
             'home.addr1'     => '『帰省先住所：住所１』',
             'home.addr2'     => '『帰省先住所：住所２』',
             'home.tel'       => '『帰省先住所：電話番号』',
-
-            // 緊急連絡先
-            'emergency.same_addr' => '現住所と同じ',
-            'emergency.name'      => '『帰省先住所：氏名』',
-            'emergency.zip1'      => '『帰省先住所：郵便番号(上3桁)』',
-            'emergency.zip2'      => '『帰省先住所：郵便番号(下4桁)』',
-            'emergency.pref'      => '『帰省先住所：都道府県』',
-            'emergency.addr1'     => '『帰省先住所：住所１』',
-            'emergency.addr2'     => '『帰省先住所：住所２』',
-            'emergency.tel'       => '『帰省先住所：電話番号』',
 
             // 学歴・職歴
             'careers.*.content' => '『学歴・職歴:index：内容』',
