@@ -40,18 +40,6 @@
             width: 78.5mm;
             border-bottom: 0.2mm solid #000;
         }
-
-        .family-table td {
-            border-bottom: 0.2mm solid #000;
-            height: 6.5mm;
-        }
-
-        .family-table td:nth-child(2),
-        .family-table td:nth-child(3),
-        .family-table td:nth-child(4) {
-            border-left: 0.2mm solid #000;
-            border-right: 0.2mm solid #000;
-        }
     </style>
 </head>
 
