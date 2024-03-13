@@ -104,8 +104,11 @@
 
         {{-- 身上書 --}}
         <input name="personal_statement[reason]" type="hidden" value="{{ $data['personal_statement']['reason'] }}" />
-        <input name="personal_statement[learned_about]" type="hidden"
-            value="{{ $data['personal_statement']['learned_about'] }}" />
+        @if (array_key_exists('learned_about_media', $data['personal_statement']))
+            @foreach ($data['personal_statement']['learned_about_media'] as $media)
+                <input name="personal_statement[learned_about_media][]" type="hidden" value="{{ $media }}" />
+            @endforeach
+        @endif
         <input name="personal_statement[strength]" type="hidden"
             value="{{ $data['personal_statement']['strength'] }}" />
         <input name="personal_statement[weakness]" type="hidden"
