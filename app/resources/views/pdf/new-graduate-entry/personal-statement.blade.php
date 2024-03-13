@@ -37,20 +37,8 @@
         }
 
         .status-table td {
-            width: 157mm;
+            width: 78.5mm;
             border-bottom: 0.2mm solid #000;
-        }
-
-        .family-table td {
-            border-bottom: 0.2mm solid #000;
-            height: 6.5mm;
-        }
-
-        .family-table td:nth-child(2),
-        .family-table td:nth-child(3),
-        .family-table td:nth-child(4) {
-            border-left: 0.2mm solid #000;
-            border-right: 0.2mm solid #000;
         }
     </style>
 </head>
@@ -68,74 +56,84 @@
         <table class="w-full status-table">
             <tr>
                 <th>＊志望の動機</th>
-                <td>
+                <td colspan="3">
                     {{ MyStr::from($data['reason'])->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                 </td>
             </tr>
             @for ($i = 1; $i < 3; $i++)
                 <tr>
                     <th></th>
-                    <td>
+                    <td colspan="2">
                         {{ MyStr::from($data['reason'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
 
-            <tr>
-                <th colspan="2">＊当社を知ったきっかけ・メディア媒体</th>
-            </tr>
-            @for ($i = 0; $i < 3; $i++)
+            @for ($i = 0; $i < count(config('const.learned_about_media')); $i += 2)
+                @if ($i === 0)
+                    <tr>
+                        <th colspan="3">＊当社を知ったきっかけ・メディア媒体</th>
+                    </tr>
+                @endif
+
                 <tr>
                     <th></th>
                     <td>
-                        {{ MyStr::from($data['learned_about'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
+                        @if (array_key_exists('learned_about_media', $data) && $i < count($data['learned_about_media']))
+                            {{ $data['learned_about_media'][$i] }}
+                        @endif
+                    </td>
+                    <td>
+                        @if (array_key_exists('learned_about_media', $data) && $i + 1 < count($data['learned_about_media']))
+                            {{ $data['learned_about_media'][$i + 1] }}
+                        @endif
                     </td>
                 </tr>
             @endfor
 
             {{-- セールスポイント --}}
             <tr>
-                <th colspan="2">＊セールスポイント（長所を含め自覚する特筆事項）</th>
+                <th colspan="3">＊セールスポイント（長所を含め自覚する特筆事項）</th>
             </tr>
             @for ($i = 0; $i < 3; $i++)
                 <tr>
                     <th></th>
-                    <td>
+                    <td colspan="2">
                         {{ MyStr::from($data['strength'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
 
             <tr>
-                <th colspan="2">＊ウィークポイント（短所を含め自覚する苦手な事項）</th>
+                <th colspan="3">＊ウィークポイント（短所を含め自覚する苦手な事項）</th>
             </tr>
             @for ($i = 0; $i < 3; $i++)
                 <tr>
                     <th></th>
-                    <td>
+                    <td colspan="2">
                         {{ MyStr::from($data['weakness'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
 
             <tr>
-                <th colspan="2">＊学生時代に力を注いだこと</th>
+                <th colspan="3">＊学生時代に力を注いだこと</th>
             </tr>
             @for ($i = 0; $i < 3; $i++)
                 <tr>
                     <th></th>
-                    <td>
+                    <td colspan="2">
                         {{ MyStr::from($data['focused'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
 
             <tr>
-                <th colspan="2">＊得意な学科（国・数・社・理・体•その他の中で得意順に書き並べて下さい）</th>
+                <th colspan="3">＊得意な学科（国・数・社・理・体•その他の中で得意順に書き並べて下さい）</th>
             </tr>
             <tr>
                 <th></th>
-                <td>
+                <td colspan="2">
                     @for ($i = 1; $i <= 6; $i++)
                         <span>{{ mb_convert_kana($i, 'N') }}．{{ MyStr::from($data["favorite_subject{$i}"])->rpad(4)->str() }}</span>
                     @endfor
@@ -143,26 +141,26 @@
             </tr>
             <tr>
                 <th></th>
-                <td style="border-bottom: none;">
+                <td colspan="2" style="border-bottom: none;">
                     1 番の学科はどの程度得意ですか？
                 </td>
             </tr>
             @for ($i = 0; $i < 2; $i++)
                 <tr>
                     <th></th>
-                    <td>
+                    <td colspan="2">
                         {{ MyStr::from($data['favorite_subject_level'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
 
             <tr>
-                <th colspan="2">＊学内・外の部活動やクラブ活動</td>
+                <th colspan="3">＊学内・外の部活動やクラブ活動</td>
             </tr>
             @for ($i = 0; $i < 2; $i++)
                 <tr>
                     <th></th>
-                    <td>
+                    <td colspan="2">
                         {{ MyStr::from($data['activity'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
@@ -170,39 +168,39 @@
 
             <tr>
                 <th>＊趣　　味</td>
-                <td>
+                <td colspan="2">
                     {{ MyStr::from($data['hobby'])->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                 </td>
             </tr>
             @for ($i = 1; $i < 2; $i++)
                 <tr>
                     <th></th>
-                    <td>
+                    <td colspan="2">
                         {{ MyStr::from($data['hobby'])->offset(STATUS_TABLE_TEXTS * $i)->limit(STATUS_TABLE_TEXTS)->kana()->str() }}
                     </td>
                 </tr>
             @endfor
 
-            @for ($i = 0; $i < count(config('const.work_places')); $i++)
+            @for ($i = 0; $i < count(config('const.work_places')); $i += 2)
                 @if ($i === 0)
                     <tr>
-                        <th colspan="2">＊希望就業場所</th>
+                        <th colspan="3">＊希望就業場所</th>
                     </tr>
                 @endif
 
-                @if (array_key_exists('work_places', $data) && $i < count($data['work_places']))
-                    <tr>
-                        <th></th>
-                        <td>
+                <tr>
+                    <th></th>
+                    <td>
+                        @if (array_key_exists('work_places', $data) && $i < count($data['work_places']))
                             {{ $data['work_places'][$i] }}
-                        </td>
-                    </tr>
-                @else
-                    <tr>
-                        <th></th>
-                        <td></td>
-                    </tr>
-                @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (array_key_exists('work_places', $data) && $i + 1 < count($data['work_places']))
+                            {{ $data['work_places'][$i + 1] }}
+                        @endif
+                    </td>
+                </tr>
             @endfor
         </table>
     </main>

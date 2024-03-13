@@ -7,6 +7,22 @@
             </div>
         </td>
     </tr>
+    @foreach (config('const.learned_about_media') as $media)
+        <tr>
+            @if ($loop->first)
+                <th rowspan="{{ count(config('const.learned_about_media')) }}">当社を知ったきっかけ・メディア媒体</th>
+            @endif
+            <td class="form-input-radio">
+                <div>
+                    <label>
+                        <input type="checkbox" name="personal_statement[learned_about_media][]" value="{{ $media }}"
+                            {{ in_array($media, old('personal_statement.learned_about_media', [])) ? 'checked' : '' }} />
+                        {{ $media }}
+                    </label>
+                </div>
+            </td>
+        </tr>
+    @endforeach
     <tr>
         <th>セールスポイント</th>
         <td class="form-input-wide">

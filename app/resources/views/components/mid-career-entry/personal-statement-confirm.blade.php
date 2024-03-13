@@ -8,6 +8,23 @@
             {{ $data['reason'] }}
         </td>
     </tr>
+    @if (array_key_exists('learned_about_media', $data))
+        @foreach ($data['learned_about_media'] as $media)
+            <tr>
+                @if ($loop->first)
+                    <th rowspan="{{ count($data['learned_about_media']) }}">当社を知ったきっかけ・メディア媒体</th>
+                @endif
+                <td class="form-input-wide">
+                    {{ $media }}
+                </td>
+            </tr>
+        @endforeach
+    @else
+        <tr>
+            <th>当社を知ったきっかけ・メディア媒体</th>
+            <td class="form-input-wide"></td>
+        </tr>
+    @endif
     <tr>
         <th>セールスポイント</th>
         <td class="form-input-wide">

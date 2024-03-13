@@ -83,7 +83,7 @@ class NewGraduateEntryRequest extends FormRequest
 
             // 身上書
             'personal_statement.reason'                 => 'required|string|max:126',
-            'personal_statement.learned_about'          => 'required|string|max:126',
+            'personal_statement.learned_about_media.*'  => 'string',
             'personal_statement.strength'               => 'required|string|max:126',
             'personal_statement.weakness'               => 'required|string|max:126',
             'personal_statement.focused'                => 'required|string|max:126',
@@ -162,7 +162,7 @@ class NewGraduateEntryRequest extends FormRequest
 
             // 身上書
             'personal_statement.reason'                 => '『身上書：志望の動機』',
-            'personal_statement.learned_about'          => '『身上書：当社を知ったきっかけ・メディア媒体』',
+            'personal_statement.learned_about_media.*'  => '『身上書：当社を知ったきっかけ・メディア媒体』',
             'personal_statement.strength'               => '『身上書：セールスポイント』',
             'personal_statement.weakness'               => '『身上書：ウイークポイント』',
             'personal_statement.focused'                => '『身上書：学生時代に力を注いだこと』',
