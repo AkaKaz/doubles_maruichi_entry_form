@@ -59,8 +59,7 @@
 
         {{-- 学歴・職歴 --}}
         @for ($i = 1; $i <= 14; $i++)
-            <input name="careers[{{ $i }}][year]" type="hidden"
-                value="{{ $data['careers'][$i]['year'] }}" />
+            <input name="careers[{{ $i }}][year]" type="hidden" value="{{ $data['careers'][$i]['year'] }}" />
             <input name="careers[{{ $i }}][month]" type="hidden"
                 value="{{ $data['careers'][$i]['month'] }}" />
             <input name="careers[{{ $i }}][content]" type="hidden"
@@ -89,6 +88,11 @@
 
         {{-- 身上書 --}}
         <input name="personal_statement[reason]" type="hidden" value="{{ $data['personal_statement']['reason'] }}" />
+        @if (array_key_exists('learned_about_media', $data['personal_statement']))
+            @foreach ($data['personal_statement']['learned_about_media'] as $media)
+                <input name="personal_statement[learned_about_media][]" type="hidden" value="{{ $media }}" />
+            @endforeach
+        @endif
         <input name="personal_statement[strength]" type="hidden"
             value="{{ $data['personal_statement']['strength'] }}" />
         <input name="personal_statement[weakness]" type="hidden"
