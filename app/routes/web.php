@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn () => redirect()->route('mid-career.index'));
-
 Route::group([
     'prefix' => 'mid-career',
     'as' => 'mid-career.',
